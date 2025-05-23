@@ -4590,7 +4590,7 @@
     document.getElementById('screamerVideo1').classList.remove('hidden');
     setTimeout(() => {
       document.getElementById('modal1').style.display = 'none';
-      document.getElementById('modal2').style.display = 'block';
+      document.getElementById('modal2').style.display = 'flex';
       document.getElementById('demonicWhisper').play();
     }, 3000);
   }
@@ -4601,7 +4601,7 @@
 
   function openFinalCurseModal() {
     document.getElementById('modal2').style.display = 'none';
-    document.getElementById('modal3').style.display = 'block';
+    document.getElementById('modal3').style.display = 'flex';
     let countdown = 10;
     const countdownEl = document.getElementById('countdown');
     const timer = setInterval(() => {
@@ -4619,13 +4619,13 @@
   // Launch first modal after 4 seconds
   window.onload = () => {
     setTimeout(() => {
-      document.getElementById('modal1').style.display = 'block';
+      document.getElementById('modal1').style.display = 'flex';
     }, 4000);
   }
 </script>
 
 <style>
-.modal {
+/* .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -4636,7 +4636,7 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-}
+} */
 .modal-content {
   background: black;
   padding: 2rem;
@@ -4652,7 +4652,6 @@
 .hidden { display: none; }
 #countdown { font-size: 4rem; color: red; margin-top: 1rem; }
 </style>
-
 
 
   </body>
