@@ -4521,64 +4521,137 @@
   </style>
 </head>
 <body>
-<!--   
-  <audio id="sfx" src="https://assets.mixkit.co/sfx/preview/mixkit-screaming-zombie-voice-2782.mp3"></audio>
-
-  <div id="modal1" class="modal">
-    <button class="close" onclick="showScreamer(() => nextModal(2))">✖</button>
-    <p>⚠️ ТИ ПРОКЛЯТИЙ. DexScreemer вже у твоєму гаманці.</p>
-    <button onclick="removeCurse()">Зняти прокляття</button>
+<!-- Modal 1: Curse Intro -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h2>DexScreemer — The Cursed Meme Coin of Wealth... or Death</h2>
+    <p>
+      Once, among abandoned charts and forgotten tokens, DexScreemer emerged — not as an investment, but as a warning.
+      They say it was born from a trader who lost his mind during a midnight dip, trapped between overleveraged longs and crashing red candles.
+      He left a contract... and one final line:
+    </p>
+    <blockquote>"He who finds the Screemer shall find fortune — or darkness."</blockquote>
+    <p><strong>You are cursed.</strong> Break the curse... or leave?</p>
+    <p>
+      <button class="red-button" onclick="screamer1()">Break the curse</button>
+      <button class="blue-button" onclick="goToPump()">Buy on Pump.fun</button>
+    </p>
   </div>
+</div>
 
-  <div id="modal2" class="modal">
-    <button class="close" onclick="showScreamer(() => nextModal(3))">✖</button>
-    <p>Ти не зможеш втекти. Прокляття глибше, ніж ти думав...</p>
-    <button onclick="window.open('https://pump.fun/', '_blank')">Втекти</button>
+<!-- Screamer SFX & jump scare placeholder -->
+<audio id="screamerSound1" src="/assets/screamer1.mp3"></audio>
+<video id="screamerVideo1" class="hidden" src="/assets/screamer1.webm"></video>
+
+<!-- Modal 2: First Holders Legend -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h2>Legend of the First Holders</h2>
+    <p>
+      They say the first one who stumbled upon Screemer bought for $3 just for fun.
+      The next morning, he woke up with $30,000 on his wallet... but his laptop screen blinked:
+    </p>
+    <blockquote>"YOU MUST GIVE BACK MORE THAN YOU TOOK."</blockquote>
+    <p>
+      He cashed out. A week later — gone. No traces. Not in chats. Not in chain.
+    </p>
+    <p>
+      Another trader tried to sell at the peak. But DexScreemer doesn’t let go.
+      His MetaMask froze. The swap field didn’t show a token, only: <strong>0xScreem</strong>.
+    </p>
+    <p>
+      And from the speakers: <em>“You tried to leave me?...”</em>
+    </p>
+    <audio id="demonicWhisper" src="/assets/demonic-whispers.mp3"></audio>
+    <p>
+      <button class="blue-button" onclick="goToPump()">Buy on Pump.fun</button>
+      <button class="red-button" onclick="openFinalCurseModal()">Keep resisting</button>
+    </p>
   </div>
+</div>
 
-  <div id="modal3" class="modal">
-    <button class="close" onclick="showScreamer()">✖</button>
-    <p>Не трейдь. Не клацай. Не дихай.</p>
+<!-- Final Curse Modal -->
+<div id="modal3" class="modal red-background">
+  <div class="modal-content bloody">
+    <h2>You're Next</h2>
+    <p>The curse is watching. You have 10 seconds left.</p>
+    <div id="countdown">10</div>
+    <video id="bloodBg" autoplay muted loop src="/assets/blood-horror-bg.mp4"></video>
   </div>
+</div>
 
-  <div id="screamer">
-    <img src="https://i.imgur.com/4T0BIdT.gif" alt="SCREAMER" />
-  </div>
+<!-- Blue Screen Death Screamer -->
+<video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video>
+<audio id="screamerSoundFinal" src="/assets/screamer2.mp3"></audio>
 
-  <script>
-    const sfx = document.getElementById('sfx');
-    const screamer = document.getElementById('screamer');
+<script>
+  function screamer1() {
+    document.getElementById('screamerSound1').play();
+    document.getElementById('screamerVideo1').classList.remove('hidden');
+    setTimeout(() => {
+      document.getElementById('modal1').style.display = 'none';
+      document.getElementById('modal2').style.display = 'block';
+      document.getElementById('demonicWhisper').play();
+    }, 3000);
+  }
 
-    const showModal = (id) => {
-      document.getElementById('modal' + id).classList.add('show');
-    };
+  function goToPump() {
+    window.open('https://pump.fun', '_blank');
+  }
 
-    const nextModal = (id) => {
-      setTimeout(() => {
-        showModal(id);
-      }, 5000);
-    };
+  function openFinalCurseModal() {
+    document.getElementById('modal2').style.display = 'none';
+    document.getElementById('modal3').style.display = 'block';
+    let countdown = 10;
+    const countdownEl = document.getElementById('countdown');
+    const timer = setInterval(() => {
+      countdown--;
+      countdownEl.textContent = countdown;
+      if (countdown === 0) {
+        clearInterval(timer);
+        document.getElementById('modal3').style.display = 'none';
+        document.getElementById('finalScreamer').classList.remove('hidden');
+        document.getElementById('screamerSoundFinal').play();
+      }
+    }, 1000);
+  }
 
-    const showScreamer = (callback) => {
-      screamer.style.display = 'flex';
-      sfx.currentTime = 0;
-      sfx.play();
-      setTimeout(() => {
-        screamer.style.display = 'none';
-        if (callback) callback();
-      }, 2000);
-    };
+  // Launch first modal after 4 seconds
+  window.onload = () => {
+    setTimeout(() => {
+      document.getElementById('modal1').style.display = 'block';
+    }, 4000);
+  }
+</script>
 
-    const removeCurse = () => {
-      window.open('https://pump.fun/', '_blank');
-    };
-
-    window.onload = () => {
-      setTimeout(() => {
-        showModal(1);
-      }, 4000);
-    };
-  </script> -->
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-content {
+  background: black;
+  padding: 2rem;
+  color: white;
+  max-width: 600px;
+  text-align: center;
+}
+.red-button { background: darkred; color: white; padding: 1rem; margin: 1rem; cursor: pointer; }
+.blue-button { background: steelblue; color: white; padding: 1rem; margin: 1rem; cursor: pointer; }
+.red-background { background: url('/assets/blood-bg.jpg') no-repeat center center / cover; }
+.bloody { color: crimson; font-weight: bold; }
+.fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10000; object-fit: cover; }
+.hidden { display: none; }
+#countdown { font-size: 4rem; color: red; margin-top: 1rem; }
+</style>
 
 
 
