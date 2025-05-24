@@ -4457,159 +4457,138 @@
   <script
     data-scrapbook-elem="basic-loader">(function () { var k1 = "data-scrapbook-shadowdom", k2 = "data-scrapbook-canvas", k3 = "data-scrapbook-input-indeterminate", k4 = "data-scrapbook-input-checked", k5 = "data-scrapbook-option-selected", k6 = "data-scrapbook-input-value", k7 = "data-scrapbook-textarea-value", k8 = "data-scrapbook-adoptedstylesheets", k9 = /^data-scrapbook-adoptedstylesheet-(\d+)$/, k10 = "data-scrapbook-shadowdom-mode", k11 = "data-scrapbook-shadowdom-clonable", k12 = "data-scrapbook-shadowdom-delegates-focus", k13 = "data-scrapbook-shadowdom-serializable", k14 = "data-scrapbook-shadowdom-slot-assignment", k15 = "data-scrapbook-slot-assigned", k16 = "data-scrapbook-slot-index", k17 = /^scrapbook-slot-index=(\d+)$/, k18 = '/scrapbook-slot-index', d = document, r = d.documentElement, $s = !!r.attachShadow, $as = !!d.adoptedStyleSheets, $c = !!window.HTMLCanvasElement, $sa = !!d.createElement('slot').assign, sle = [], sls = [], slt = function (r) { if ($sa) { var E = r.childNodes, i, e, s, m; for (i = 0; i < E.length; i++) { e = E[i]; if (e.nodeType === 8) { s = e.nodeValue; if (m = s.match(k17)) { s = e.nextSibling; if (s.nodeType === 3) { sls[m[1]] = s; } r.removeChild(e); i--; } else if (s === k18) { r.removeChild(e); i--; } } } } }, sl = function () { var i = sle.length, j, d, e; while (i--) { d = sle[i]; e = d.elem; d = d.value.split(','); j = d.length; while (j--) { d[j] = sls[parseInt(d[j], 10)]; } try { e.assign.apply(e, d); } catch (ex) { console.error(ex); } } }, asl = (function (r) { var l = [], E, i, e, m, c, j; if ($as) { E = r.attributes; i = E.length; while (i--) { e = E[i]; if (!(m = e.nodeName.match(k9))) { continue; } c = l[m[1]] = new CSSStyleSheet(); r.removeAttribute(m[0]); m = e.nodeValue.split('\n\n'); j = m.length; while (j--) { try { m[j] && c.insertRule(m[j]); } catch (ex) { console.error(ex); } } } } return l; })(r), as = function (d, e) { var l, i, I; if ($as && (l = e.getAttribute(k8)) !== null) { l = l.split(','); for (i = 0, I = l.length; i < I; i++) { d.adoptedStyleSheets.push(asl[l[i]]); } e.removeAttribute(k8); } }, fn = function (r) { var E = r.querySelectorAll ? r.querySelectorAll("*") : r.getElementsByTagName("*"), i = E.length, e, d, s, m; while (i--) { e = E[i]; s = e.shadowRoot; if ($s && (d = e.getAttribute(k1))) { if (!s) { try { s = e.attachShadow({ mode: (m = e.getAttribute(k10)) !== null ? m : 'open', clonable: e.hasAttribute(k11), delegatesFocus: e.hasAttribute(k12), serializable: e.hasAttribute(k13), slotAssignment: (m = e.getAttribute(k14)) !== null ? m : void 0, }); s.innerHTML = d; } catch (ex) { console.error(ex); } } e.removeAttribute(k1); e.removeAttribute(k10); e.removeAttribute(k11); e.removeAttribute(k12); e.removeAttribute(k13); e.removeAttribute(k14); } if ($c && (d = e.getAttribute(k2)) !== null) { (function () { var c = e, g = new Image(); g.onload = function () { c.getContext('2d').drawImage(g, 0, 0); }; g.src = d; })(); e.removeAttribute(k2); } if ((d = e.getAttribute(k3)) !== null) { e.indeterminate = true; e.removeAttribute(k3); } if ((d = e.getAttribute(k4)) !== null) { e.checked = d === 'true'; e.removeAttribute(k4); } if ((d = e.getAttribute(k5)) !== null) { e.selected = d === 'true'; e.removeAttribute(k5); } if ((d = e.getAttribute(k6)) !== null) { e.value = d; e.removeAttribute(k6); } if ((d = e.getAttribute(k7)) !== null) { e.value = d; e.removeAttribute(k7); } if ($sa && (d = e.getAttribute(k15)) !== null) { sle.push({ elem: e, value: d }); e.removeAttribute(k15); } if ($sa && (d = e.getAttribute(k16)) !== null) { sls[d] = e; e.removeAttribute(k16); } if (s) { slt(e); as(s, e); fn(s); } } }; as(d, r); fn(d); sl(); })()</script>
  <style>
- body {
-    margin: 0;
-    background: black;
-    font-family: monospace;
-    overflow: hidden;
-  }
+ 
+body {
+  margin: 0;
+  background: black;
+  font-family: monospace;
+  overflow: hidden;
+}
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    inset: 0;
-    background-color: transparent;
-    justify-content: center;
-    align-items: center;
-  }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* не блокує клік */
+}
 
+.modal-content {
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 16 / 10;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  pointer-events: auto; /* дозволяє клік по кнопках */
+}
+
+#modal1 .modal-content {
+  background-image: url('/image/b1.png');
+  position: relative;
+}
+#modal2 .modal-content {
+  background-image: url('/image/b2.png');
+position: relative;
+}
+#modal3 .modal-content {
+  background-image: url('/image/b3.png');
+position: relative;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  top:62%;
+  position: absolute;
+}
+
+.image-button {
+  width: 160px;
+  max-width: 40%;
+  height: auto;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+.image-button:hover {
+  opacity: 0.85;
+}
+
+#countdown {
+  font-size: 3rem;
+  color: red;
+  margin-top: 1rem;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  object-fit: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .modal-content {
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0;
-    box-sizing: border-box;
+    max-width: 95vw;
+    background-size: cover;
+    aspect-ratio: auto;
   }
-
-  #modal1 .modal-content {
-    background-image: url('/image/b1.png');
-  }
-
-  #modal2 .modal-content {
-    background-image: url('/image/b2.png');
-  }
-
-  #modal3 .modal-content {
-    background-image: url('/image/b3.png');
-  }
-
-  .button-row {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem 1rem;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-
   .image-button {
-    width: 160px;
-    max-width: 40%;
-    height: auto;
-    cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
+    width: 45%;
   }
-
-  .image-button:hover {
-    opacity: 0.8;
+  .button-row {
+    gap: 0.8rem;
+    margin-top: 1rem;
   }
-
-  @media (max-width: 768px) {
-    .modal-content {
-      background-size: cover;
-    }
-
-    .button-row {
-      gap: 0.8rem;
-      padding: 1rem;
-    }
-
-    .image-button {
-      width: 45%;
-    }
+  #countdown {
+    font-size: 2rem;
   }
-    #countdown {
-      font-size: 3rem;
-      color: red;
-    }
-
-    .fullscreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 10000;
-      object-fit: cover;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .modal-content {
-        height: 100vh;
-        background-size: cover;
-        aspect-ratio: auto;
-        padding-bottom: 8rem;
-      }
-
-      .button-row {
-        flex-direction: column;
-        width: 90%;
-        bottom: 2rem;
-      }
-
-      .red-button,
-      .blue-button {
-        width: 100%;
-      }
-
-      #countdown {
-        font-size: 2.5rem;
-      }
-    }
+}
   </style>
 </head>
 <body>
 
-  <!-- Modal 1 -->
+<audio id="evilLaugh">
+  <source src="/audio/laugh.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Modal 1 -->
 <div id="modal1" class="modal">
   <div class="modal-content">
     <div class="button-row">
-      <img
-        src="/image/btn/m2.png"
-        class="image-button"
-        alt="Break the curse"
-        onmouseover="this.src='/image/btn/m2_light.png'"
-        onmouseout="this.src='/image/btn/m2.png'"
-        onclick="screamer1()"
-      />
-      <img
-        src="/image/btn/m1.png"
-        class="image-button"
-        alt="Buy on Pump.fun"
-        onmouseover="this.src='/image/btn/m1_light.png'"
-        onmouseout="this.src='/image/btn/m1.png'"
-        onclick="goToPump()"
-      />
+      <img src="/image/btn/m1.png" class="image-button"
+           alt="ignore"
+           onmouseover="this.src='/image/btn/m1_light.png'"
+           onmouseout="this.src='/image/btn/m1.png'"
+           onclick="screamer1()" />
+      <img src="/image/btn/m2.png" class="image-button"
+           alt="undo"
+           onmouseover="this.src='/image/btn/m2_light.png'"
+           onmouseout="this.src='/image/btn/m2.png'"
+           onclick="goToPump()" />
     </div>
   </div>
 </div>
+
 
 <!-- Modal 2 -->
 <div id="modal2" class="modal">
@@ -4651,7 +4630,10 @@
   <video id="screamerVideo1" class="hidden" src="/assets/screamer1.webm"></video>
   <audio id="demonicWhisper" src="/assets/demonic-whispers.mp3"></audio>
   <audio id="screamerSoundFinal" src="/assets/screamer2.mp3"></audio>
+
+
 <audio id="evilLaugh" src="/audio/laugth.mp3"></audio>
+
 <script>
   // Показати першу модалку через 3 секунди після завантаження
   window.onload = () => {
