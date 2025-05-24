@@ -4567,6 +4567,87 @@ position: relative;
 </head>
 <body>
 
+
+
+<!-- тест -->
+
+<div id="introModal" class="modal" style="z-index: 10000; background-color: rgba(0, 0, 0, 0.95);">
+  <div class="modal-content" style="background: none; max-width: 90vw; aspect-ratio: auto;">
+    <h2 style="color: red; font-size: 2rem;">Are you ready to be cursed?</h2>
+    <p style="color: white; font-size: 1.2rem;">Turn on your sound and press the button below to continue...</p>
+    <button onclick="startCurse()" style="margin-top: 1rem; padding: 1rem 2rem; font-size: 1rem; background: darkred; color: white; border: none; cursor: pointer;">
+      Begin the Curse
+    </button>
+  </div>
+</div>
+<style>
+#introModal {
+  display: flex;
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95); /* затемнення */
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+#introModal .modal-content {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 20px red;
+}
+
+#introModal h2 {
+  font-size: 2rem;
+  color: red;
+  margin-bottom: 1rem;
+}
+
+#introModal p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+#introModal button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background: darkred;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#introModal button:hover {
+  background: crimson;
+}
+
+
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <audio id="evilLaugh">
   <source src="/audio/laugh.mp3" type="audio/mpeg" />
 </audio>
@@ -4632,15 +4713,28 @@ position: relative;
   <audio id="screamerSoundFinal" src="/assets/screamer2.mp3"></audio>
 
 
-<audio id="evilLaugh" src="/audio/laugth.mp3"></audio>
+<!-- <audio id="evilLaugh" src="/audio/laugth.mp3"></audio> -->
 
 <script>
   // Показати першу модалку через 3 секунди після завантаження
-  window.onload = () => {
-    setTimeout(() => {
-      document.getElementById('modal1').style.display = 'flex';
-    }, 3000);
-  };
+window.onload = () => {
+  document.getElementById('introModal').style.display = 'flex';
+};
+
+function startCurse() {
+  const laugh = document.getElementById('evilLaugh');
+  laugh.volume = 1;
+
+  laugh.play().catch((err) => {
+    console.warn('Laugh autoplay failed:', err);
+  });
+
+  document.getElementById('introModal').style.display = 'none';
+
+  setTimeout(() => {
+    document.getElementById('modal1').style.display = 'flex';
+  }, 3000);
+}
 
   function screamer1() {
     // Сховати першу модалку
@@ -4688,6 +4782,30 @@ position: relative;
       }
     }, 1000);
   }
+
+
+
+
+
+
+function startCurse() {
+  const laugh = document.getElementById('evilLaugh');
+  laugh.volume = 1;
+
+  laugh.play().catch((err) => {
+    console.warn('Laugh autoplay failed:', err);
+  });
+
+  document.getElementById('introModal').style.display = 'none';
+
+  setTimeout(() => {
+    document.getElementById('modal1').style.display = 'flex';
+  }, 3000);
+}
+
+
+
+
 </script>
 
 
