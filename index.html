@@ -2559,7 +2559,7 @@
       .custom-1cx4b6o {
         position: initial;
         width: 210px;
-        height: 919px;
+        /* height: 919px; */
       }
     }
   </style>
@@ -4469,7 +4469,7 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
+
       background: #111;
       border: 3px solid red;
       padding: 30px;
@@ -4625,32 +4625,109 @@
 </script>
 
 <style>
-/* .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.9);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-} */
-.modal-content {
-  background: black;
-  padding: 2rem;
-  color: white;
-  max-width: 600px;
-  text-align: center;
-}
-.red-button { background: darkred; color: white; padding: 1rem; margin: 1rem; cursor: pointer; }
-.blue-button { background: steelblue; color: white; padding: 1rem; margin: 1rem; cursor: pointer; }
-.red-background { background: url('/assets/blood-bg.jpg') no-repeat center center / cover; }
-.bloody { color: crimson; font-weight: bold; }
-.fullscreen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10000; object-fit: cover; }
-.hidden { display: none; }
-#countdown { font-size: 4rem; color: red; margin-top: 1rem; }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .modal-content {
+    background: black;
+    padding: 2rem;
+    color: white;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px red;
+  }
+
+  .red-button,
+  .blue-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .red-button {
+    background: darkred;
+    color: white;
+  }
+
+  .blue-button {
+    background: steelblue;
+    color: white;
+  }
+
+  .red-background {
+    background: url('/assets/blood-bg.jpg') no-repeat center center / cover;
+  }
+
+  .bloody {
+    color: crimson;
+    font-weight: bold;
+  }
+
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    object-fit: cover;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #countdown {
+    font-size: 4rem;
+    color: red;
+    margin-top: 1rem;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 100%;
+      padding: 1.5rem 1rem;
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    blockquote {
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+
+    .red-button,
+    .blue-button {
+      width: 100%;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    #countdown {
+      font-size: 2.5rem;
+    }
+  }
 </style>
 
 
