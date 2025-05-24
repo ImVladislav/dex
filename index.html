@@ -4456,140 +4456,221 @@
   </div>
   <script
     data-scrapbook-elem="basic-loader">(function () { var k1 = "data-scrapbook-shadowdom", k2 = "data-scrapbook-canvas", k3 = "data-scrapbook-input-indeterminate", k4 = "data-scrapbook-input-checked", k5 = "data-scrapbook-option-selected", k6 = "data-scrapbook-input-value", k7 = "data-scrapbook-textarea-value", k8 = "data-scrapbook-adoptedstylesheets", k9 = /^data-scrapbook-adoptedstylesheet-(\d+)$/, k10 = "data-scrapbook-shadowdom-mode", k11 = "data-scrapbook-shadowdom-clonable", k12 = "data-scrapbook-shadowdom-delegates-focus", k13 = "data-scrapbook-shadowdom-serializable", k14 = "data-scrapbook-shadowdom-slot-assignment", k15 = "data-scrapbook-slot-assigned", k16 = "data-scrapbook-slot-index", k17 = /^scrapbook-slot-index=(\d+)$/, k18 = '/scrapbook-slot-index', d = document, r = d.documentElement, $s = !!r.attachShadow, $as = !!d.adoptedStyleSheets, $c = !!window.HTMLCanvasElement, $sa = !!d.createElement('slot').assign, sle = [], sls = [], slt = function (r) { if ($sa) { var E = r.childNodes, i, e, s, m; for (i = 0; i < E.length; i++) { e = E[i]; if (e.nodeType === 8) { s = e.nodeValue; if (m = s.match(k17)) { s = e.nextSibling; if (s.nodeType === 3) { sls[m[1]] = s; } r.removeChild(e); i--; } else if (s === k18) { r.removeChild(e); i--; } } } } }, sl = function () { var i = sle.length, j, d, e; while (i--) { d = sle[i]; e = d.elem; d = d.value.split(','); j = d.length; while (j--) { d[j] = sls[parseInt(d[j], 10)]; } try { e.assign.apply(e, d); } catch (ex) { console.error(ex); } } }, asl = (function (r) { var l = [], E, i, e, m, c, j; if ($as) { E = r.attributes; i = E.length; while (i--) { e = E[i]; if (!(m = e.nodeName.match(k9))) { continue; } c = l[m[1]] = new CSSStyleSheet(); r.removeAttribute(m[0]); m = e.nodeValue.split('\n\n'); j = m.length; while (j--) { try { m[j] && c.insertRule(m[j]); } catch (ex) { console.error(ex); } } } } return l; })(r), as = function (d, e) { var l, i, I; if ($as && (l = e.getAttribute(k8)) !== null) { l = l.split(','); for (i = 0, I = l.length; i < I; i++) { d.adoptedStyleSheets.push(asl[l[i]]); } e.removeAttribute(k8); } }, fn = function (r) { var E = r.querySelectorAll ? r.querySelectorAll("*") : r.getElementsByTagName("*"), i = E.length, e, d, s, m; while (i--) { e = E[i]; s = e.shadowRoot; if ($s && (d = e.getAttribute(k1))) { if (!s) { try { s = e.attachShadow({ mode: (m = e.getAttribute(k10)) !== null ? m : 'open', clonable: e.hasAttribute(k11), delegatesFocus: e.hasAttribute(k12), serializable: e.hasAttribute(k13), slotAssignment: (m = e.getAttribute(k14)) !== null ? m : void 0, }); s.innerHTML = d; } catch (ex) { console.error(ex); } } e.removeAttribute(k1); e.removeAttribute(k10); e.removeAttribute(k11); e.removeAttribute(k12); e.removeAttribute(k13); e.removeAttribute(k14); } if ($c && (d = e.getAttribute(k2)) !== null) { (function () { var c = e, g = new Image(); g.onload = function () { c.getContext('2d').drawImage(g, 0, 0); }; g.src = d; })(); e.removeAttribute(k2); } if ((d = e.getAttribute(k3)) !== null) { e.indeterminate = true; e.removeAttribute(k3); } if ((d = e.getAttribute(k4)) !== null) { e.checked = d === 'true'; e.removeAttribute(k4); } if ((d = e.getAttribute(k5)) !== null) { e.selected = d === 'true'; e.removeAttribute(k5); } if ((d = e.getAttribute(k6)) !== null) { e.value = d; e.removeAttribute(k6); } if ((d = e.getAttribute(k7)) !== null) { e.value = d; e.removeAttribute(k7); } if ($sa && (d = e.getAttribute(k15)) !== null) { sle.push({ elem: e, value: d }); e.removeAttribute(k15); } if ($sa && (d = e.getAttribute(k16)) !== null) { sls[d] = e; e.removeAttribute(k16); } if (s) { slt(e); as(s, e); fn(s); } } }; as(d, r); fn(d); sl(); })()</script>
+ <style>
+ body {
+    margin: 0;
+    background: black;
+    font-family: monospace;
+    overflow: hidden;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      color: #4aff91;
-      font-family: monospace;
-      overflow: hidden;
-    }
-    .modal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+  }
 
-      background: #111;
-      border: 3px solid red;
-      padding: 30px;
-      color: white;
-      font-size: 18px;
-      z-index: 1000;
-      display: none;
-      text-align: center;
-      transition: transform 0.2s ease-in-out;
+  .modal-content {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  #modal1 .modal-content {
+    background-image: url('/image/b1.png');
+  }
+
+  #modal2 .modal-content {
+    background-image: url('/image/b2.png');
+  }
+
+  #modal3 .modal-content {
+    background-image: url('/image/b3.png');
+  }
+
+  .button-row {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .image-button {
+    width: 160px;
+    max-width: 40%;
+    height: auto;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .image-button:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      background-size: cover;
     }
-    .modal.show {
-      display: block;
-      transform: translate(-50%, -50%) scale(1);
+
+    .button-row {
+      gap: 0.8rem;
+      padding: 1rem;
     }
-    .modal button {
-      margin: 10px;
-      padding: 10px 20px;
-      background: #4aff91;
-      color: black;
-      border: none;
-      cursor: pointer;
+
+    .image-button {
+      width: 45%;
     }
-    .modal .close {
-      background: none;
-      border: none;
+  }
+    #countdown {
+      font-size: 3rem;
       color: red;
-      font-size: 20px;
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      cursor: pointer;
     }
-    #screamer {
-      display: none;
+
+    .fullscreen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: black;
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
+      z-index: 10000;
+      object-fit: cover;
     }
-    #screamer img {
-      max-width: 100%;
-      height: auto;
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        height: 100vh;
+        background-size: cover;
+        aspect-ratio: auto;
+        padding-bottom: 8rem;
+      }
+
+      .button-row {
+        flex-direction: column;
+        width: 90%;
+        bottom: 2rem;
+      }
+
+      .red-button,
+      .blue-button {
+        width: 100%;
+      }
+
+      #countdown {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
 <body>
-<!-- Modal 1: Curse Intro -->
+
+  <!-- Modal 1 -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h2>DexScreemer — The Cursed Meme Coin of Wealth... or Death</h2>
-    <p>
-      Once, among abandoned charts and forgotten tokens, DexScreemer emerged — not as an investment, but as a warning.
-      They say it was born from a trader who lost his mind during a midnight dip, trapped between overleveraged longs and crashing red candles.
-      He left a contract... and one final line:
-    </p>
-    <blockquote>"He who finds the Screemer shall find fortune — or darkness."</blockquote>
-    <p><strong>You are cursed.</strong> Break the curse... or leave?</p>
-    <p>
-      <button class="red-button" onclick="screamer1()">Break the curse</button>
-      <button class="blue-button" onclick="goToPump()">Buy on Pump.fun</button>
-    </p>
+    <div class="button-row">
+      <img
+        src="/image/btn/m2.png"
+        class="image-button"
+        alt="Break the curse"
+        onmouseover="this.src='/image/btn/m2_light.png'"
+        onmouseout="this.src='/image/btn/m2.png'"
+        onclick="screamer1()"
+      />
+      <img
+        src="/image/btn/m1.png"
+        class="image-button"
+        alt="Buy on Pump.fun"
+        onmouseover="this.src='/image/btn/m1_light.png'"
+        onmouseout="this.src='/image/btn/m1.png'"
+        onclick="goToPump()"
+      />
+    </div>
   </div>
 </div>
 
-<!-- Screamer SFX & jump scare placeholder -->
-<audio id="screamerSound1" src="/assets/screamer1.mp3"></audio>
-<video id="screamerVideo1" class="hidden" src="/assets/screamer1.webm"></video>
-
-<!-- Modal 2: First Holders Legend -->
+<!-- Modal 2 -->
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h2>Legend of the First Holders</h2>
-    <p>
-      They say the first one who stumbled upon Screemer bought for $3 just for fun.
-      The next morning, he woke up with $30,000 on his wallet... but his laptop screen blinked:
-    </p>
-    <blockquote>"YOU MUST GIVE BACK MORE THAN YOU TOOK."</blockquote>
-    <p>
-      He cashed out. A week later — gone. No traces. Not in chats. Not in chain.
-    </p>
-    <p>
-      Another trader tried to sell at the peak. But DexScreemer doesn’t let go.
-      His MetaMask froze. The swap field didn’t show a token, only: <strong>0xScreem</strong>.
-    </p>
-    <p>
-      And from the speakers: <em>“You tried to leave me?...”</em>
-    </p>
-    <audio id="demonicWhisper" src="/assets/demonic-whispers.mp3"></audio>
-    <p>
-      <button class="blue-button" onclick="goToPump()">Buy on Pump.fun</button>
-      <button class="red-button" onclick="openFinalCurseModal()">Keep resisting</button>
-    </p>
+    <div class="button-row">
+      <img
+        src="/image/btn/m4.png"
+        class="image-button"
+        alt="Buy on Pump.fun"
+        onmouseover="this.src='/image/btn/m4_light.png'"
+        onmouseout="this.src='/image/btn/m4.png'"
+                onclick="openFinalCurseModal()"
+
+      />
+      <img
+        src="/image/btn/m3.png"
+        class="image-button"
+        alt="Keep resisting"
+        onmouseover="this.src='/image/btn/m3_light.png'"
+        onmouseout="this.src='/image/btn/m3.png'"
+        onclick="openFinalCurseModal()"
+                onclick="goToPump()"
+
+      />
+    </div>
   </div>
 </div>
 
-<!-- Final Curse Modal -->
-<div id="modal3" class="modal red-background">
-  <div class="modal-content bloody">
-    <h2>You're Next</h2>
-    <p>The curse is watching. You have 10 seconds left.</p>
-    <div id="countdown">10</div>
-    <video id="bloodBg" autoplay muted loop src="/assets/blood-horror-bg.mp4"></video>
+  <!-- Modal 3 -->
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <div id="countdown" style="color: red; font-size: 4rem;">10</div>
   </div>
 </div>
 
-<!-- Blue Screen Death Screamer -->
-<video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video>
-<audio id="screamerSoundFinal" src="/assets/screamer2.mp3"></audio>
-
+  <!-- Screamer video/audio -->
+  <video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video>
+  <audio id="screamerSound1" src="/assets/screamer1.mp3"></audio>
+  <video id="screamerVideo1" class="hidden" src="/assets/screamer1.webm"></video>
+  <audio id="demonicWhisper" src="/assets/demonic-whispers.mp3"></audio>
+  <audio id="screamerSoundFinal" src="/assets/screamer2.mp3"></audio>
+<audio id="evilLaugh" src="/audio/laugth.mp3"></audio>
 <script>
+  // Показати першу модалку через 3 секунди після завантаження
+  window.onload = () => {
+    setTimeout(() => {
+      document.getElementById('modal1').style.display = 'flex';
+    }, 3000);
+  };
+
   function screamer1() {
+    // Сховати першу модалку
+    document.getElementById('modal1').style.display = 'none';
+
+    // Звук і скрімер
     document.getElementById('screamerSound1').play();
     document.getElementById('screamerVideo1').classList.remove('hidden');
+
+    // Через 3 сек показати другу модалку
     setTimeout(() => {
-      document.getElementById('modal1').style.display = 'none';
+      document.getElementById('screamerVideo1').classList.add('hidden');
       document.getElementById('modal2').style.display = 'flex';
       document.getElementById('demonicWhisper').play();
     }, 3000);
@@ -4599,14 +4680,24 @@
     window.open('https://pump.fun', '_blank');
   }
 
-  function openFinalCurseModal() {
-    document.getElementById('modal2').style.display = 'none';
+ function openFinalCurseModal() {
+  // Сховати другу модалку
+  document.getElementById('modal2').style.display = 'none';
+
+  // Через 3 секунди показати третю і програти сміх
+  setTimeout(() => {
     document.getElementById('modal3').style.display = 'flex';
+    document.getElementById('evilLaugh').play();
+    startCountdown();
+  }, 3000);
+}
+
+  function startCountdown() {
     let countdown = 10;
-    const countdownEl = document.getElementById('countdown');
+    const el = document.getElementById('countdown');
     const timer = setInterval(() => {
       countdown--;
-      countdownEl.textContent = countdown;
+      el.textContent = countdown;
       if (countdown === 0) {
         clearInterval(timer);
         document.getElementById('modal3').style.display = 'none';
@@ -4615,120 +4706,7 @@
       }
     }, 1000);
   }
-
-  // Launch first modal after 4 seconds
-  window.onload = () => {
-    setTimeout(() => {
-      document.getElementById('modal1').style.display = 'flex';
-    }, 4000);
-  }
 </script>
-
-<style>
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: border-box;
-  }
-
-  .modal-content {
-    background: black;
-    padding: 2rem;
-    color: white;
-    max-width: 600px;
-    text-align: center;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px red;
-  }
-
-  .red-button,
-  .blue-button {
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    margin: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-  }
-
-  .red-button {
-    background: darkred;
-    color: white;
-  }
-
-  .blue-button {
-    background: steelblue;
-    color: white;
-  }
-
-  .red-background {
-    background: url('/assets/blood-bg.jpg') no-repeat center center / cover;
-  }
-
-  .bloody {
-    color: crimson;
-    font-weight: bold;
-  }
-
-  .fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10000;
-    object-fit: cover;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  #countdown {
-    font-size: 4rem;
-    color: red;
-    margin-top: 1rem;
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    .modal-content {
-      width: 100%;
-      padding: 1.5rem 1rem;
-      font-size: 1rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    blockquote {
-      font-size: 1rem;
-      margin: 1rem 0;
-    }
-
-    .red-button,
-    .blue-button {
-      width: 100%;
-      font-size: 1rem;
-      margin: 0.5rem 0;
-    }
-
-    #countdown {
-      font-size: 2.5rem;
-    }
-  }
-</style>
 
 
   </body>
