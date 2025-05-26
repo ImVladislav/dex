@@ -3030,25 +3030,37 @@ function screamer1() {
         window.open('https://pump.fun', '_blank');
       }
 
-      function openFinalCurseModal() {
-        const menuImg = document.getElementById('menuImage');
-        const numImg = document.getElementById('numberImage');
-        if (menuImg) menuImg.src = '/image/menu/s3.png';
-        if (numImg) numImg.src = '/image/menu/3.png';
-        document.getElementById('modal2').style.display = 'none';
-              // 🔥 ЗАМІНА іконок на *b
-              updateIcons('b');
-      // document.getElementById('ico_1').src = './image/links/ico_1b.png';
-      // document.getElementById('ico_2').src = './image/links/ico_2b.png';
-      // document.getElementById('ico_3').src = './image/links/ico_3b.png';
-      // document.getElementById('ico_4').src = './image/links/ico_4b.png';
-        setTimeout(() => {
-          document.getElementById('modal3').style.display = 'flex';
-          document.getElementById('evilLaugh').play();
-          startCountdown();
+  function openFinalCurseModal() {
+  const menuImg = document.getElementById('menuImage');
+  const numImg = document.getElementById('numberImage');
+  if (menuImg) menuImg.src = '/image/menu/s3.png';
+  if (numImg) numImg.src = '/image/menu/3.png';
 
-        }, 3000);
-      }
+  document.getElementById('modal2').style.display = 'none';
+
+  // 🔥 Заміна іконок
+  updateIcons('b');
+
+  // 🎬 Рандомне відео
+  const video = document.getElementById('screamerVideo1');
+  const randomIndex = Math.floor(Math.random() * 13) + 1;
+  video.src = `/video/${randomIndex}.mp4`;
+  video.classList.remove('hidden');
+  video.classList.add('fullscreen');
+
+  // 🛠 Гарантований запуск
+  video.currentTime = 0;
+  video.muted = false;
+  video.play().catch(err => console.warn('Video play error:', err));
+
+  // 🧹 Коли відео закінчиться
+  video.onended = () => {
+    video.classList.add('hidden');
+    document.getElementById('modal3').style.display = 'flex';
+    document.getElementById('evilLaugh').play();
+    startCountdown();
+  };
+}
 function updateIcons(suffix) {
   console.log('ICON UPDATE:', suffix);
 
