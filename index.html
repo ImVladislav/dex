@@ -2308,6 +2308,7 @@
         </nav>
         <script>
           function screamer1() {
+            
             // заміна першої картинки
             const menuImage = document.getElementById('menuImage');
             if (menuImage) {
@@ -2321,19 +2322,37 @@
             }
           }
 
-          function openFinalCurseModal() {
-            // заміна першої картинки
-            const menuImage = document.getElementById('menuImage');
-            if (menuImage) {
-              menuImage.src = './image/menu/s3.png';
-            }
+function openFinalCurseModal() {
+  const menuImg = document.getElementById('menuImage');
+  const numImg = document.getElementById('numberImage');
+  if (menuImg) menuImg.src = '/image/menu/s3.png';
+  if (numImg) numImg.src = '/image/menu/3.png';
 
-            // заміна другої картинки
-            const numberImage = document.getElementById('numberImage');
-            if (numberImage) {
-              numberImage.src = './image/menu/3.png';
-            }
-          }
+  document.getElementById('modal2').style.display = 'none';
+
+  // 🔥 ЗАМІНА іконок на *b
+  updateIcons('b');
+
+  // 🎬 РАНДОМНЕ ВІДЕО
+  const video = document.getElementById('screamerVideo1');
+  const randomIndex = Math.floor(Math.random() * 13) + 1;
+  video.src = `/video/${randomIndex}.mp4`;
+  video.classList.remove('hidden');
+
+  // 🎧 Гарантовано запустити відео після load
+  video.onloadeddata = () => {
+    video.play().catch(err => console.warn('Video play error:', err));
+  };
+
+  // 🧨 Після 3 секунд — сховати відео, відкрити modal3, звук і таймер
+  setTimeout(() => {
+    video.classList.add('hidden');
+    document.getElementById('modal3').style.display = 'flex';
+    document.getElementById('evilLaugh').play();
+    startCountdown();
+  }, 3000);
+}
+
         </script>
 
 
@@ -2956,8 +2975,14 @@
     <!-- Media -->
     <video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video>
     <audio id="screamerSound1" src="/audio/laugth.mp3"></audio>
-    <video id="screamerVideo1" class="hidden" src="/assets/screamer1.webm"></video>
-    <audio id="demonicWhisper" src="/audio/laugth.mp3"></audio>
+<video
+  id="screamerVideo1"
+  class="fullscreen hidden"
+  muted
+  autoplay
+  playsinline
+></video>
+<audio id="demonicWhisper" src="/audio/laugth.mp3"></audio>
     <audio id="screamerSoundFinal" src="/audio/laugth.mp3"></audio>
 
     <script>
@@ -2974,7 +2999,16 @@
 function screamer1() {
   document.getElementById('modal1').style.display = 'none';
   document.getElementById('screamerSound1').play();
-  document.getElementById('screamerVideo1').classList.remove('hidden');
+
+  const video = document.getElementById('screamerVideo1');
+
+  // 🎲 РАНДОМНЕ ВІДЕО від 1 до 13
+  const randomIndex = Math.floor(Math.random() * 13) + 1;
+  video.src = `/video/${randomIndex}.mp4`;
+  video.load(); // оновлення джерела
+  video.play().catch(err => console.warn('Video play error:', err));
+
+  video.classList.remove('hidden');
 
   // ✅ НЕ ЧІПАЮ: заміна menu картинок
   const menuImg = document.getElementById('menuImage');
@@ -2983,14 +3017,10 @@ function screamer1() {
   if (numImg) numImg.src = '/image/menu/2.png';
 
   // ✅ ДОДАНО: заміна ico_ на *a
-    updateIcons('a');
-  // document.getElementById('ico_1').src = './image/links/ico_1a.png';
-  // document.getElementById('ico_2').src = './image/links/ico_2a.png';
-  // document.getElementById('ico_3').src = './image/links/ico_3a.png';
-  // document.getElementById('ico_4').src = './image/links/ico_4a.png';
+  updateIcons('a');
 
   setTimeout(() => {
-    document.getElementById('screamerVideo1').classList.add('hidden');
+    video.classList.add('hidden');
     document.getElementById('modal2').style.display = 'flex';
     document.getElementById('demonicWhisper').play();
   }, 3000);
