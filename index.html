@@ -3020,18 +3020,24 @@ function screamer1() {
         }, 3000);
       }
 function updateIcons(suffix) {
-  // Оновлює всі елементи з id
+  console.log('ICON UPDATE:', suffix);
+
   for (let i = 1; i <= 4; i++) {
     const el = document.getElementById(`ico_${i}`);
     if (el) el.src = `./image/links/ico_${i}${suffix}.png`;
   }
 
-  // Оновлює всі банерні іконки
   const bannerIcons = document.querySelectorAll('.banner-ico');
   bannerIcons.forEach(icon => {
     const index = icon.dataset.index;
     icon.src = `./image/links/ico_${index}${suffix}.png`;
   });
+
+  const bannerImage = document.getElementById('bannerImage');
+  if (bannerImage) {
+    if (suffix === 'a') bannerImage.src = '/image/background/v2.png';
+    if (suffix === 'b' || suffix === 'c') bannerImage.src = '/image/background/v3.png';
+  }
 }
 function startCountdown() {
   let countdown = 10;
@@ -3064,15 +3070,13 @@ updateIcons('c');
   }, 1000);
 }
 
-    function showBanner(version = 'v1') {
-      const wrapper = document.getElementById('bannerWrapper');
-      const banner = document.getElementById('bannerImage');
-      const icons = document.getElementById('bannerLinks');
+function showBanner() {
+  const wrapper = document.getElementById('bannerWrapper');
+  const icons = document.getElementById('bannerLinks');
+  wrapper.style.display = 'block';
+  icons.style.display = 'flex';
+}
 
-      banner.src = `/image/background/${version}.png`;
-      wrapper.style.display = 'block';
-      icons.style.display = 'flex';
-    }
 
     function hideBanner() {
       document.getElementById('bannerWrapper').style.display = 'none';
