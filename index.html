@@ -3911,18 +3911,10 @@
             <img id="menuImage" src="./image/menu/s1.png" />
             <div
               style="margin-top: -14px; justify-content:space-around; display: flex; background-color: #08080f; width: 100%; height: 40px; position: absolute; ">
-              <a class="links" href="">
-                <img src="./image/links/ico_4.png">
-              </a>
-              <a class="links" href="">
-                <img src="./image/links/ico_3.png">
-              </a>
-              <a class="links" href="">
-                <img src="./image/links/ico_1.png">
-              </a>
-              <a class="links" href="">
-                <img src="./image/links/ico_2.png">
-              </a>
+              <a class="links" href=""><img id="ico_4" src="./image/links/ico_4.png"></a>
+              <a class="links" href=""><img id="ico_3" src="./image/links/ico_3.png"></a>
+              <a class="links" href=""><img id="ico_1" src="./image/links/ico_1.png"></a>
+              <a class="links" href=""><img id="ico_2" src="./image/links/ico_2.png"></a>
             </div>
           </div>
 
@@ -4042,7 +4034,7 @@
 
                       const banner = document.createElement('img');
                       banner.id = 'socialBanner';
-                      banner.src = '/image/social.jpg';
+                      banner.src = '/image/background/v1.png';
                       banner.alt = 'You are cursed';
                       banner.style.display = 'block';
 
@@ -4190,309 +4182,7 @@
                     </svg></button>
                 </ul>
                 <hr class="ds-nav-main-list-separator">
-                <ul class="ds-nav-main-list">
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link ds-nav-link-active"
-                      href="https://dexscreener.com/solana"><img alt="Solana"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="solana.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Solana</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/ethereum"><img
-                        alt="Ethereum" class="ds-nav-main-nav-chain-icon custom-0" src="ethereum.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Ethereum</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/base"><img
-                        alt="Base" class="ds-nav-main-nav-chain-icon custom-0" src="base.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Base</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/sui"><img
-                        alt="Sui" class="ds-nav-main-nav-chain-icon custom-0" src="sui.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Sui</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/bsc"><img
-                        alt="BSC" class="ds-nav-main-nav-chain-icon custom-0" src="bsc.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">BSC</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/pulsechain"><img alt="PulseChain"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="pulsechain.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">PulseChain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/abstract"><img
-                        alt="Abstract" class="ds-nav-main-nav-chain-icon custom-0" src="abstract.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Abstract</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/hyperliquid"><img alt="Hyperliquid"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="hyperliquid.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Hyperliquid</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/hyperevm"><img
-                        alt="HyperEVM" class="ds-nav-main-nav-chain-icon custom-0" src="hyperevm.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">HyperEVM</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/avalanche"><img
-                        alt="Avalanche" class="ds-nav-main-nav-chain-icon custom-0" src="avalanche.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Avalanche</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/ton"><img
-                        alt="TON" class="ds-nav-main-nav-chain-icon custom-0" src="ton.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">TON</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/polygon"><img
-                        alt="Polygon" class="ds-nav-main-nav-chain-icon custom-0" src="polygon.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Polygon</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/sonic"><img
-                        alt="Sonic" class="ds-nav-main-nav-chain-icon custom-0" src="sonic.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Sonic</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/xrpl"><img
-                        alt="XRPL" class="ds-nav-main-nav-chain-icon custom-0" src="xrpl.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">XRPL</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/arbitrum"><img
-                        alt="Arbitrum" class="ds-nav-main-nav-chain-icon custom-0" src="arbitrum.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Arbitrum</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/osmosis"><img
-                        alt="Osmosis" class="ds-nav-main-nav-chain-icon custom-0" src="osmosis.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Osmosis</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/cronos"><img
-                        alt="Cronos" class="ds-nav-main-nav-chain-icon custom-0" src="cronos.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Cronos</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/worldchain"><img alt="World Chain"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="worldchain.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">World Chain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/berachain"><img
-                        alt="Berachain" class="ds-nav-main-nav-chain-icon custom-0" src="berachain.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Berachain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/hedera"><img
-                        alt="Hedera" class="ds-nav-main-nav-chain-icon custom-0" src="hedera.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Hedera</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/optimism"><img
-                        alt="Optimism" class="ds-nav-main-nav-chain-icon custom-0" src="optimism.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Optimism</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/tron"><img
-                        alt="Tron" class="ds-nav-main-nav-chain-icon custom-0" src="tron.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Tron</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/aptos"><img
-                        alt="Aptos" class="ds-nav-main-nav-chain-icon custom-0" src="aptos.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Aptos</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/soneium"><img
-                        alt="Soneium" class="ds-nav-main-nav-chain-icon custom-0" src="soneium.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Soneium</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/linea"><img
-                        alt="Linea" class="ds-nav-main-nav-chain-icon custom-0" src="linea.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Linea</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/icp"><img
-                        alt="ICP" class="ds-nav-main-nav-chain-icon custom-0" src="icp.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">ICP</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/near"><img
-                        alt="NEAR" class="ds-nav-main-nav-chain-icon custom-0" src="near.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">NEAR</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/unichain"><img
-                        alt="Unichain" class="ds-nav-main-nav-chain-icon custom-0" src="unichain.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Unichain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/zksync"><img
-                        alt="zkSync" class="ds-nav-main-nav-chain-icon custom-0" src="zksync.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">zkSync</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/multiversx"><img alt="MultiversX"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="multiversx.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">MultiversX</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/seiv2"><img
-                        alt="Sei V2" class="ds-nav-main-nav-chain-icon custom-0" src="seiv2.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Sei V2</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/blast"><img
-                        alt="Blast" class="ds-nav-main-nav-chain-icon custom-0" src="blast.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Blast</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/starknet"><img
-                        alt="Starknet" class="ds-nav-main-nav-chain-icon custom-0" src="starknet.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Starknet</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/fantom"><img
-                        alt="Fantom" class="ds-nav-main-nav-chain-icon custom-0" src="fantom.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Fantom</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/cardano"><img
-                        alt="Cardano" class="ds-nav-main-nav-chain-icon custom-0" src="cardano.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Cardano</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/injective"><img
-                        alt="Injective" class="ds-nav-main-nav-chain-icon custom-0" src="injective.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Injective</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/algorand"><img
-                        alt="Algorand" class="ds-nav-main-nav-chain-icon custom-0" src="algorand.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Algorand</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/dogechain"><img
-                        alt="Dogechain" class="ds-nav-main-nav-chain-icon custom-0" src="dogechain.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Dogechain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/mantle"><img
-                        alt="Mantle" class="ds-nav-main-nav-chain-icon custom-0" src="mantle.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Mantle</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/beam"><img
-                        alt="Beam" class="ds-nav-main-nav-chain-icon custom-0" src="beam.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Beam</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/merlinchain"><img alt="Merlin Chain"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="merlinchain.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Merlin Chain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/ink"><img
-                        alt="Ink" class="ds-nav-main-nav-chain-icon custom-0" src="ink.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Ink</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/core"><img
-                        alt="Core" class="ds-nav-main-nav-chain-icon custom-0" src="core.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Core</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/apechain"><img
-                        alt="ApeChain" class="ds-nav-main-nav-chain-icon custom-0" src="apechain.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">ApeChain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/story"><img
-                        alt="Story" class="ds-nav-main-nav-chain-icon custom-0" src="story.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Story</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/metis"><img
-                        alt="Metis" class="ds-nav-main-nav-chain-icon custom-0" src="metis.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Metis</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/flare"><img
-                        alt="Flare" class="ds-nav-main-nav-chain-icon custom-0" src="flare.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Flare</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/moonbeam"><img
-                        alt="Moonbeam" class="ds-nav-main-nav-chain-icon custom-0" src="moonbeam.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Moonbeam</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/shibarium"><img
-                        alt="Shibarium" class="ds-nav-main-nav-chain-icon custom-0" src="shibarium.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Shibarium</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/celo"><img
-                        alt="Celo" class="ds-nav-main-nav-chain-icon custom-0" src="celo.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Celo</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/harmony"><img
-                        alt="Harmony" class="ds-nav-main-nav-chain-icon custom-0" src="harmony.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Harmony</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/ethereumpow"><img alt="EthereumPoW"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="ethereumpow.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">EthereumPoW</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/avalanchedfk"><img alt="Avalanche DFK"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="avalanchedfk.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Avalanche DFK</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/scroll"><img
-                        alt="Scroll" class="ds-nav-main-nav-chain-icon custom-0" src="scroll.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Scroll</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/manta"><img
-                        alt="Manta" class="ds-nav-main-nav-chain-icon custom-0" src="manta.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Manta</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/conflux"><img
-                        alt="Conflux" class="ds-nav-main-nav-chain-icon custom-0" src="conflux.png.html"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Conflux</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/mode"><img
-                        alt="Mode" class="ds-nav-main-nav-chain-icon custom-0" src="mode.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Mode</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/flowevm"><img
-                        alt="Flow EVM" class="ds-nav-main-nav-chain-icon custom-0" src="flowevm.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Flow EVM</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/vana"><img
-                        alt="Vana" class="ds-nav-main-nav-chain-icon custom-0" src="vana.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Vana</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/venom"><img
-                        alt="Venom" class="ds-nav-main-nav-chain-icon custom-0" src="venom.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Venom</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/gnosischain"><img alt="Gnosis Chain"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="gnosischain.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Gnosis Chain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/oasissapphire"><img alt="Oasis Sapphire"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="oasissapphire.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Oasis Sapphire</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/fraxtal"><img
-                        alt="Fraxtal" class="ds-nav-main-nav-chain-icon custom-0" src="fraxtal.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Fraxtal</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/zircuit"><img
-                        alt="Zircuit" class="ds-nav-main-nav-chain-icon custom-0" src="zircuit.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Zircuit</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/iotex"><img
-                        alt="IoTeX" class="ds-nav-main-nav-chain-icon custom-0" src="iotex.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">IoTeX</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/energi"><img
-                        alt="Energi" class="ds-nav-main-nav-chain-icon custom-0" src="energi.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Energi</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/ethereumclassic"><img alt="Ethereum Classic"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="ethereumclassic.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Ethereum Classic</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/degenchain"><img alt="Degen Chain"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="degenchain.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Degen Chain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/aurora"><img
-                        alt="Aurora" class="ds-nav-main-nav-chain-icon custom-0" src="aurora.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Aurora</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/canto"><img
-                        alt="Canto" class="ds-nav-main-nav-chain-icon custom-0" src="canto.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Canto</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/kava"><img
-                        alt="Kava" class="ds-nav-main-nav-chain-icon custom-0" src="kava.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Kava</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/polygonzkevm"><img alt="Polygon zkEVM"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="polygonzkevm.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Polygon zkEVM</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/zora"><img
-                        alt="Zora" class="ds-nav-main-nav-chain-icon custom-0" src="zora.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Zora</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/elastos"><img
-                        alt="Elastos" class="ds-nav-main-nav-chain-icon custom-0" src="elastos.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Elastos</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/bouncebit"><img
-                        alt="BounceBit" class="ds-nav-main-nav-chain-icon custom-0" src="bouncebit.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">BounceBit</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/movement"><img
-                        alt="Movement" class="ds-nav-main-nav-chain-icon custom-0" src="movement.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Movement</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/telos"><img
-                        alt="Telos" class="ds-nav-main-nav-chain-icon custom-0" src="telos.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Telos</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/opbnb"><img
-                        alt="opBNB" class="ds-nav-main-nav-chain-icon custom-0" src="opbnb.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">opBNB</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/astar"><img
-                        alt="Astar" class="ds-nav-main-nav-chain-icon custom-0" src="astar.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Astar</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/taiko"><img
-                        alt="Taiko" class="ds-nav-main-nav-chain-icon custom-0" src="taiko.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Taiko</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/oasisemerald"><img alt="Oasis Emerald"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="oasisemerald.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Oasis Emerald</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/arbitrumnova"><img alt="Arbitrum Nova"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="arbitrumnova.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Arbitrum Nova</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/evmos"><img
-                        alt="Evmos" class="ds-nav-main-nav-chain-icon custom-0" src="evmos.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Evmos</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/moonriver"><img
-                        alt="Moonriver" class="ds-nav-main-nav-chain-icon custom-0" src="moonriver.png.svg"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Moonriver</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/fuse"><img
-                        alt="Fuse" class="ds-nav-main-nav-chain-icon custom-0" src="fuse.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Fuse</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/velas"><img
-                        alt="Velas" class="ds-nav-main-nav-chain-icon custom-0" src="velas.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Velas</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/zetachain"><img
-                        alt="ZetaChain" class="ds-nav-main-nav-chain-icon custom-0" src="zetachain.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">ZetaChain</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/boba"><img
-                        alt="Boba" class="ds-nav-main-nav-chain-icon custom-0" src="boba.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Boba</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/kcc"><img
-                        alt="KCC" class="ds-nav-main-nav-chain-icon custom-0" src="kcc.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">KCC</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link"
-                      href="https://dexscreener.com/stepnetwork"><img alt="Step Network"
-                        class="ds-nav-main-nav-chain-icon custom-0" src="stepnetwork.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Step Network</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/zkfair"><img
-                        alt="ZKFair" class="ds-nav-main-nav-chain-icon custom-0" src="zkfair.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">ZKFair</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/bitgert"><img
-                        alt="Bitgert" class="ds-nav-main-nav-chain-icon custom-0" src="bitgert.png" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Bitgert</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/meter"><img
-                        alt="Meter" class="ds-nav-main-nav-chain-icon custom-0" src="meter.png.svg" loading="lazy"><span
-                        class="ds-nav-main-nav-link-text">Meter</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/neonevm"><img
-                        alt="Neon EVM" class="ds-nav-main-nav-chain-icon custom-0" src="neonevm.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Neon EVM</span></a></li>
-                  <li class="ds-nav-main-list-item"><a class="ds-nav-link" href="https://dexscreener.com/polkadot"><img
-                        alt="Polkadot" class="ds-nav-main-nav-chain-icon custom-0" src="polkadot.png"
-                        loading="lazy"><span class="ds-nav-main-nav-link-text">Polkadot</span></a></li>
-                </ul>
+
               </div>
             </div>
             <div class="custom-1g7c4u7">
@@ -4797,11 +4487,69 @@
     #introModal button:hover {
       background: crimson;
     }
+
+
+    .modal-icons {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .modal-icons img {
+      width: 40px;
+      height: auto;
+    }
+
+    #bannerWrapper {
+      display: none;
+      position: fixed;
+      top: 5vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90vw;
+      /* max-width: 500px; */
+      z-index: 9;
+      pointer-events: none;
+    }
+
+    #bannerWrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .banner-icons {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      pointer-events: auto;
+    }
+
+    .banner-icons a img {
+      width: 40px;
+      height: auto;
+    }
   </style>
   </head>
 
   <body>
-
+  <!-- Floating Banner Overlay -->
+  <div id="bannerWrapper">
+    <img id="bannerImage" src="/image/background/v1.png" alt="Banner">
+    <div class="banner-icons" id="bannerLinks">
+      <a href="#"><img id="ico_1" src="./image/links/ico_1.png" alt="ico_1"></a>
+      <a href="#"><img id="ico_2" src="./image/links/ico_2.png" alt="ico_2"></a>
+      <a href="#"><img id="ico_3" src="./image/links/ico_3.png" alt="ico_3"></a>
+      <a href="#"><img id="ico_4" src="./image/links/ico_4.png" alt="ico_4"></a>
+    </div>
+  </div>
 
 
     <audio id="evilLaugh">
@@ -4860,23 +4608,29 @@
         }, 3000);
       };
 
-      function screamer1() {
-        document.getElementById('modal1').style.display = 'none';
-        document.getElementById('screamerSound1').play();
-        document.getElementById('screamerVideo1').classList.remove('hidden');
+function screamer1() {
+  document.getElementById('modal1').style.display = 'none';
+  document.getElementById('screamerSound1').play();
+  document.getElementById('screamerVideo1').classList.remove('hidden');
 
-        // ЗАМІНА КАРТИНОК
-        const menuImg = document.getElementById('menuImage');
-        const numImg = document.getElementById('numberImage');
-        if (menuImg) menuImg.src = '/image/menu/s2.png';
-        if (numImg) numImg.src = '/image/menu/2.png';
+  // ✅ НЕ ЧІПАЮ: заміна menu картинок
+  const menuImg = document.getElementById('menuImage');
+  const numImg = document.getElementById('numberImage');
+  if (menuImg) menuImg.src = '/image/menu/s2.png';
+  if (numImg) numImg.src = '/image/menu/2.png';
 
-        setTimeout(() => {
-          document.getElementById('screamerVideo1').classList.add('hidden');
-          document.getElementById('modal2').style.display = 'flex';
-          document.getElementById('demonicWhisper').play();
-        }, 3000);
-      }
+  // ✅ ДОДАНО: заміна ico_ на *a
+  document.getElementById('ico_1').src = './image/links/ico_1a.png';
+  document.getElementById('ico_2').src = './image/links/ico_2a.png';
+  document.getElementById('ico_3').src = './image/links/ico_3a.png';
+  document.getElementById('ico_4').src = './image/links/ico_4a.png';
+
+  setTimeout(() => {
+    document.getElementById('screamerVideo1').classList.add('hidden');
+    document.getElementById('modal2').style.display = 'flex';
+    document.getElementById('demonicWhisper').play();
+  }, 3000);
+}
 
       function goToPump() {
         window.open('https://pump.fun', '_blank');
@@ -4888,6 +4642,11 @@
         if (menuImg) menuImg.src = '/image/menu/s3.png';
         if (numImg) numImg.src = '/image/menu/3.png';
         document.getElementById('modal2').style.display = 'none';
+              // 🔥 ЗАМІНА іконок на *b
+      document.getElementById('ico_1').src = './image/links/ico_1b.png';
+      document.getElementById('ico_2').src = './image/links/ico_2b.png';
+      document.getElementById('ico_3').src = './image/links/ico_3b.png';
+      document.getElementById('ico_4').src = './image/links/ico_4b.png';
         setTimeout(() => {
           document.getElementById('modal3').style.display = 'flex';
           document.getElementById('evilLaugh').play();
@@ -4896,21 +4655,54 @@
         }, 3000);
       }
 
-      function startCountdown() {
-        let countdown = 10;
-        const el = document.getElementById('countdown');
-        const timer = setInterval(() => {
-          countdown--;
-          el.textContent = countdown;
-          if (countdown === 0) {
-            clearInterval(timer);
-            document.getElementById('modal3').style.display = 'none';
-            document.getElementById('finalScreamer').classList.remove('hidden');
-            document.getElementById('screamerSoundFinal').play();
-          }
-        }, 1000);
-      }
+function startCountdown() {
+  let countdown = 10;
+  const el = document.getElementById('countdown');
+
+  el.textContent = countdown;
+
+  const timer = setInterval(() => {
+    countdown--;
+
+    if (countdown <= 0) {
+      clearInterval(timer);
+      el.textContent = "0";
+      document.getElementById('modal3').style.display = 'none';
+      document.getElementById('finalScreamer').classList.remove('hidden');
+      document.getElementById('screamerSoundFinal').play();
+
+      // 🔥 ЗАМІНА картинок після таймера
+      const menuImg = document.getElementById('menuImage');
+      const numImg = document.getElementById('numberImage');
+      if (menuImg) menuImg.src = '/image/menu/s3.png';
+      if (numImg) numImg.src = '/image/menu/3.png';
+
+
+
+    } else {
+      el.textContent = countdown;
+    }
+  }, 1000);
+}
+
+    function showBanner(version = 'v1') {
+      const wrapper = document.getElementById('bannerWrapper');
+      const banner = document.getElementById('bannerImage');
+      const icons = document.getElementById('bannerLinks');
+
+      banner.src = `/image/background/${version}.png`;
+      wrapper.style.display = 'block';
+      icons.style.display = 'flex';
+    }
+
+    function hideBanner() {
+      document.getElementById('bannerWrapper').style.display = 'none';
+    }
+
+
     </script>
   </body>
 
 </html>
+
+<!-- 4632 -->
