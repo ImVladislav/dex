@@ -2905,16 +2905,15 @@
 
   <body>
   <!-- Floating Banner Overlay -->
-  <div id="bannerWrapper">
-    <img id="bannerImage" src="/image/background/v1.png" alt="Banner">
-    <div class="banner-icons" id="bannerLinks">
-      <a href="#"><img id="ico_1" src="./image/links/ico_1.png" alt="ico_1"></a>
-      <a href="#"><img id="ico_2" src="./image/links/ico_2.png" alt="ico_2"></a>
-      <a href="#"><img id="ico_3" src="./image/links/ico_3.png" alt="ico_3"></a>
-      <a href="#"><img id="ico_4" src="./image/links/ico_4.png" alt="ico_4"></a>
-    </div>
+<div id="bannerWrapper">
+  <img id="bannerImage" src="/image/background/v1.png" alt="Banner">
+  <div class="banner-icons" id="bannerLinks">
+    <a href="#"><img class="banner-ico" data-index="1" src="./image/links/ico_1.png" alt="ico_1"></a>
+    <a href="#"><img class="banner-ico" data-index="2" src="./image/links/ico_2.png" alt="ico_2"></a>
+    <a href="#"><img class="banner-ico" data-index="3" src="./image/links/ico_3.png" alt="ico_3"></a>
+    <a href="#"><img class="banner-ico" data-index="4" src="./image/links/ico_4.png" alt="ico_4"></a>
   </div>
-
+</div>
 
     <audio id="evilLaugh">
       <source src="/audio/laugh.mp3" type="audio/mpeg" />
@@ -2984,10 +2983,11 @@ function screamer1() {
   if (numImg) numImg.src = '/image/menu/2.png';
 
   // ✅ ДОДАНО: заміна ico_ на *a
-  document.getElementById('ico_1').src = './image/links/ico_1a.png';
-  document.getElementById('ico_2').src = './image/links/ico_2a.png';
-  document.getElementById('ico_3').src = './image/links/ico_3a.png';
-  document.getElementById('ico_4').src = './image/links/ico_4a.png';
+    updateIcons('a');
+  // document.getElementById('ico_1').src = './image/links/ico_1a.png';
+  // document.getElementById('ico_2').src = './image/links/ico_2a.png';
+  // document.getElementById('ico_3').src = './image/links/ico_3a.png';
+  // document.getElementById('ico_4').src = './image/links/ico_4a.png';
 
   setTimeout(() => {
     document.getElementById('screamerVideo1').classList.add('hidden');
@@ -3007,10 +3007,11 @@ function screamer1() {
         if (numImg) numImg.src = '/image/menu/3.png';
         document.getElementById('modal2').style.display = 'none';
               // 🔥 ЗАМІНА іконок на *b
-      document.getElementById('ico_1').src = './image/links/ico_1b.png';
-      document.getElementById('ico_2').src = './image/links/ico_2b.png';
-      document.getElementById('ico_3').src = './image/links/ico_3b.png';
-      document.getElementById('ico_4').src = './image/links/ico_4b.png';
+              updateIcons('b');
+      // document.getElementById('ico_1').src = './image/links/ico_1b.png';
+      // document.getElementById('ico_2').src = './image/links/ico_2b.png';
+      // document.getElementById('ico_3').src = './image/links/ico_3b.png';
+      // document.getElementById('ico_4').src = './image/links/ico_4b.png';
         setTimeout(() => {
           document.getElementById('modal3').style.display = 'flex';
           document.getElementById('evilLaugh').play();
@@ -3018,7 +3019,20 @@ function screamer1() {
 
         }, 3000);
       }
+function updateIcons(suffix) {
+  // Оновлює всі елементи з id
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById(`ico_${i}`);
+    if (el) el.src = `./image/links/ico_${i}${suffix}.png`;
+  }
 
+  // Оновлює всі банерні іконки
+  const bannerIcons = document.querySelectorAll('.banner-ico');
+  bannerIcons.forEach(icon => {
+    const index = icon.dataset.index;
+    icon.src = `./image/links/ico_${index}${suffix}.png`;
+  });
+}
 function startCountdown() {
   let countdown = 10;
   const el = document.getElementById('countdown');
@@ -3040,6 +3054,7 @@ function startCountdown() {
       const numImg = document.getElementById('numberImage');
       if (menuImg) menuImg.src = '/image/menu/s3.png';
       if (numImg) numImg.src = '/image/menu/3.png';
+updateIcons('c');
 
 
 
