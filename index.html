@@ -2064,29 +2064,32 @@ function openFinalCurseModal() {
   if (menuImg) menuImg.src = '/image/menu/s3.png';
   if (numImg) numImg.src = '/image/menu/3.png';
 
+  document.getElementById('screamerSound1').play();
   document.getElementById('modal2').style.display = 'none';
+  toggleMainBlockVisibility();
 
-  // 🔥 ЗАМІНА іконок на *b
+  // 🔥 Заміна іконок
   updateIcons('b');
 
-  // 🎬 РАНДОМНЕ ВІДЕО
-  const video = document.getElementById('screamerVideo1');
-  const randomIndex = Math.floor(Math.random() * 13) + 1;
-  video.src = `/video/${randomIndex}.mp4`;
-  video.classList.remove('hidden');
+  // 💀 Показ фінального скрімеру одразу тут
+  const final = document.getElementById('finalScreamer');
 
-  // 🎧 Гарантовано запустити відео після load
-  video.onloadeddata = () => {
-    video.play().catch(err => console.warn('Video play error:', err));
-  };
+  if (final.requestFullscreen) {
+    final.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
+  } else if (final.webkitRequestFullscreen) {
+    final.webkitRequestFullscreen();
+  } else if (final.msRequestFullscreen) {
+    final.msRequestFullscreen();
+  }
 
-  // 🧨 Після 3 секунд — сховати відео, відкрити modal3, звук і таймер
-  setTimeout(() => {
-    video.classList.add('hidden');
-    document.getElementById('modal3').style.display = 'flex';
-    document.getElementById('evilLaugh').play();
-    startCountdown();
-  }, 3000);
+  final.classList.remove('hidden');
+  final.currentTime = 0;
+  final.play().catch(err => console.warn('Play error:', err));
+
+  const audio = document.getElementById('screamerSoundFinal');
+  audio.play().catch(err => console.warn('Audio error:', err));
+
+
 }
 
         </script>
@@ -2583,6 +2586,15 @@ function openFinalCurseModal() {
   playsinline
 ></video>
 <audio id="demonicWhisper" src="/audio/laugth.mp3"></audio>
+
+<video
+  id="finalScreamer"
+  class="fullscreen hidden"
+  autoplay
+  playsinline
+  preload="auto"
+></video>
+
     <audio id="screamerSoundFinal" src="/audio/laugth.mp3"></audio>
 
     <script>
@@ -2654,13 +2666,12 @@ document.getElementById('screamerSound1').play();
 toggleMainBlockVisibility(); // <-- одразу після закриття modal2
 
 // коли відкриєш modal3 — теж:
-video.onended = () => {
+setTimeout(() => {
   video.classList.add('hidden');
   document.getElementById('modal3').style.display = 'flex';
   document.getElementById('evilLaugh').play();
-  toggleMainBlockVisibility(); // <-- після відкриття modal3
-  startCountdown();
-};
+  toggleMainBlockVisibility(); // ⬅ показати/сховати фон
+}, 3000); // або скільки там секунд триває скрімер
 }
 function updateIcons(suffix) {
   console.log('ICON UPDATE:', suffix);
@@ -2826,7 +2837,17 @@ function playFinalScreamerFullscreen() {
   document.getElementById('modal3').style.display = 'none';
   toggleMainBlockVisibility();
 
-  // Розгортаємо у фулскрін (тільки якщо дозволено)
+  // 🎬 Рандомне відео від 1 до 13
+  const randomIndex = Math.floor(Math.random() * 6) + 1;
+  final.src = `/video/${randomIndex}.mp4`;
+
+  // Показуємо
+  final.classList.remove('hidden');
+  final.currentTime = 0;
+  final.muted = false;
+  final.volume = 1;
+
+  // Fullscreen
   if (final.requestFullscreen) {
     final.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
   } else if (final.webkitRequestFullscreen) {
@@ -2835,13 +2856,12 @@ function playFinalScreamerFullscreen() {
     final.msRequestFullscreen();
   }
 
-  // Показуємо відео
-  final.classList.remove('hidden');
-  final.currentTime = 0;
+  // Гарантований запуск
   final.play().catch(err => console.warn('Play error:', err));
 
-  // Запускаємо звук
+  // Звук
   const audio = document.getElementById('screamerSoundFinal');
+  audio.volume = 1;
   audio.play().catch(err => console.warn('Audio error:', err));
 }
 </script>
