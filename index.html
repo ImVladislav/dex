@@ -2982,11 +2982,14 @@ function openFinalCurseModal() {
     <!-- Modal 3 -->
     <div id="modal3" class="modal">
       <div class="modal-content">
-        <div id="countdown">10</div>
-                  <img src="/image/btn/m3.png" class="image-button" alt="Keep resisting"
+        <div class="button-row">
+          <img src="/image/btn/m4.png" class="image-button" alt="Buy on Pump.fun"
+            onmouseover="this.src='/image/btn/m4_light.png'" onmouseout="this.src='/image/btn/m4.png'"
+            onclick="openFinalCurseModal()" />
+          <img src="/image/btn/m3.png" class="image-button" alt="Keep resisting"
             onmouseover="this.src='/image/btn/m3_light.png'" onmouseout="this.src='/image/btn/m3.png'"
             onclick="goToPump();" />
-      </div>
+        </div>
     </div>
 
     <!-- Media -->
@@ -3015,7 +3018,7 @@ function openFinalCurseModal() {
 
 function screamer1() {
   document.getElementById('modal1').style.display = 'none';
-  document.getElementById('screamerSound1').play();
+  
 
   const video = document.getElementById('screamerVideo1');
 
@@ -3052,7 +3055,7 @@ function screamer1() {
   const numImg = document.getElementById('numberImage');
   if (menuImg) menuImg.src = '/image/menu/s3.png';
   if (numImg) numImg.src = '/image/menu/3.png';
-
+document.getElementById('screamerSound1').play();
   document.getElementById('modal2').style.display = 'none';
 
   // 🔥 Заміна іконок
@@ -3180,6 +3183,40 @@ function showBanner() {
 
     
     </script>
+
+
+<script>
+  const screamerContainer = document.createElement('video');
+  screamerContainer.id = 'randomScreamer';
+  screamerContainer.className = 'fullscreen hidden';
+  screamerContainer.autoplay = true;
+  screamerContainer.playsInline = true;
+  screamerContainer.muted = false;
+  screamerContainer.controls = false;
+  screamerContainer.setAttribute('preload', 'auto');
+  document.body.appendChild(screamerContainer);
+
+  function playRandomScreamer() {
+    const video = document.getElementById('randomScreamer');
+    const randomIndex = Math.floor(Math.random() * 6) + 1; // 1 - 13
+    video.src = `/video/${randomIndex}.mp4`;
+    video.classList.remove('hidden');
+    video.play().catch(() => {});
+    
+    video.onended = () => {
+      video.classList.add('hidden');
+      scheduleNextScreamer();
+    };
+  }
+
+  function scheduleNextScreamer() {
+    const delay = Math.floor(Math.random() * 6 + 10) * 1000; // 10-15 sec
+    setTimeout(playRandomScreamer, delay);
+  }
+
+  // Запускаємо вперше
+  scheduleNextScreamer();
+</script>
   </body>
 
 </html>
