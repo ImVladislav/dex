@@ -2326,7 +2326,7 @@ function openFinalCurseModal() {
  
     }
   }
-      @media screen and (min-width: 720px) {
+      @media screen and (min-width: 620px) {
           .button-row {
 
       top: 58%;
@@ -2364,7 +2364,7 @@ function openFinalCurseModal() {
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 10000;
+      z-index: 100000;
       object-fit: cover;
     }
 
@@ -2576,8 +2576,7 @@ function openFinalCurseModal() {
     </div>
 
     <!-- Media -->
-    <video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video>
-    <audio id="screamerSound1" src="/audio/laugth.mp3"></audio>
+
 <video
   id="screamerVideo1"
   class="fullscreen hidden"
@@ -2585,15 +2584,17 @@ function openFinalCurseModal() {
   autoplay
   playsinline
 ></video>
-<audio id="demonicWhisper" src="/audio/laugth.mp3"></audio>
+
 
 <video
-  id="finalScreamer"
+  id="screamerFinal"
   class="fullscreen hidden"
   autoplay
   playsinline
   preload="auto"
+
 ></video>
+    <!-- <video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video> -->
 
     <audio id="screamerSoundFinal" src="/audio/laugth.mp3"></audio>
 
@@ -2629,7 +2630,7 @@ function screamer1() {
   setTimeout(() => {
     video.classList.add('hidden');
     document.getElementById('modal2').style.display = 'flex';
-    document.getElementById('demonicWhisper').play();
+    // document.getElementById('demonicWhisper').play();
     toggleMainBlockVisibility(); // ← після відкриття modal2
   }, 3000);
 }
@@ -2643,7 +2644,7 @@ function screamer1() {
   const numImg = document.getElementById('numberImage');
   if (menuImg) menuImg.src = '/image/menu/s3.png';
   if (numImg) numImg.src = '/image/menu/3.png';
-document.getElementById('screamerSound1').play();
+// document.getElementById('screamerSound1').play();
   document.getElementById('modal2').style.display = 'none';
 
   // 🔥 Заміна іконок
@@ -2651,7 +2652,7 @@ document.getElementById('screamerSound1').play();
 
   // 🎬 Рандомне відео
   const video = document.getElementById('screamerVideo1');
-  const randomIndex = Math.floor(Math.random() * 13) + 1;
+  const randomIndex = Math.floor(Math.random() * 6) + 1;
   video.src = `/video/${randomIndex}.mp4`;
   video.classList.remove('hidden');
   video.classList.add('fullscreen');
@@ -2709,17 +2710,27 @@ function startCountdown() {
   const el = document.getElementById('countdown');
   el.textContent = countdown;
 
+  const video = document.getElementById('screamerFinal');
+  if (!video) return console.warn('Missing #screamerFinal');
+
+  const randomIndex = Math.floor(Math.random() * 6) + 1;
+  video.src = `/video/${randomIndex}.mp4`;
+  video.classList.remove('hidden');
+  video.muted = false;
+  video.volume = 1;
+  video.currentTime = 0;
+  video.play().catch(err => console.warn('Play error:', err));
+
   const timer = setInterval(() => {
     countdown--;
+    el.textContent = countdown;
 
     if (countdown <= 0) {
       clearInterval(timer);
-      el.textContent = "0";
-
-      // ❗ ТІЛЬКИ ТУТ ховаємо modal3
       document.getElementById('modal3').style.display = 'none';
-      document.getElementById('finalScreamer').classList.remove('hidden');
       document.getElementById('screamerSoundFinal').play();
+      updateIcons('c');
+      toggleMainBlockVisibility();
 
       // 🔥 ЗАМІНА картинок після таймера
       const menuImg = document.getElementById('menuImage');
@@ -2831,40 +2842,37 @@ function showBanner() {
 
 
 function playFinalScreamerFullscreen() {
-  const final = document.getElementById('finalScreamer');
+  const video = document.getElementById('screamerFinal');
+  if (!video) return console.warn('Missing #screamerFinal');
 
-  // Закриваємо modal3
   document.getElementById('modal3').style.display = 'none';
   toggleMainBlockVisibility();
 
-  // 🎬 Рандомне відео від 1 до 13
   const randomIndex = Math.floor(Math.random() * 6) + 1;
-  final.src = `/video/${randomIndex}.mp4`;
+  video.src = `/video/${randomIndex}.mp4`;
+  video.classList.remove('hidden');
+  video.classList.add('fullscreen');
+  video.muted = false;
+  video.volume = 1;
+  video.currentTime = 0;
 
-  // Показуємо
-  final.classList.remove('hidden');
-  final.currentTime = 0;
-  final.muted = false;
-  final.volume = 1;
+  video.play().catch(err => console.warn('Play error:', err));
 
-  // Fullscreen
-  if (final.requestFullscreen) {
-    final.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
-  } else if (final.webkitRequestFullscreen) {
-    final.webkitRequestFullscreen();
-  } else if (final.msRequestFullscreen) {
-    final.msRequestFullscreen();
+  if (video.requestFullscreen) {
+    video.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
   }
 
-  // Гарантований запуск
-  final.play().catch(err => console.warn('Play error:', err));
-
-  // Звук
-  const audio = document.getElementById('screamerSoundFinal');
-  audio.volume = 1;
-  audio.play().catch(err => console.warn('Audio error:', err));
+  video.onended = () => {
+    video.classList.add('hidden');
+    toggleMainBlockVisibility();
+  };
 }
 </script>
+
   </body>
 
 </html>
