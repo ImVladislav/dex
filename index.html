@@ -91,7 +91,7 @@
       border-style: none;
     }
 
-    :
+    
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none !important;
@@ -2564,8 +2564,8 @@ function openFinalCurseModal() {
       <div class="modal-content">
         <div class="button-row">
           <img src="/image/btn/m4.png" class="image-button" alt="Buy on Pump.fun"
-            onmouseover="this.src='/image/btn/m4_light.png'" onmouseout="this.src='/image/btn/m4.png'"
-            onclick="openFinalCurseModal()" />
+  onmouseover="this.src='/image/btn/m4_light.png'" onmouseout="this.src='/image/btn/m4.png'"
+  onclick="playFinalScreamerFullscreen()" />
           <img src="/image/btn/m3.png" class="image-button" alt="Keep resisting"
             onmouseover="this.src='/image/btn/m3_light.png'" onmouseout="this.src='/image/btn/m3.png'"
             onclick="goToPump();" />
@@ -2598,7 +2598,7 @@ window.onload = () => {
 };
 
 function screamer1() {
- document.getElementById('modal1').style.display = 'none';
+  document.getElementById('modal1').style.display = 'none';
   toggleMainBlockVisibility(); // ← оце треба!
 
   const video = document.getElementById('screamerVideo1');
@@ -2816,6 +2816,33 @@ function showBanner() {
   if (mainBlock) {
     mainBlock.style.display = isAnyModalVisible ? 'none' : '';
   }
+}
+
+
+function playFinalScreamerFullscreen() {
+  const final = document.getElementById('finalScreamer');
+
+  // Закриваємо modal3
+  document.getElementById('modal3').style.display = 'none';
+  toggleMainBlockVisibility();
+
+  // Розгортаємо у фулскрін (тільки якщо дозволено)
+  if (final.requestFullscreen) {
+    final.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
+  } else if (final.webkitRequestFullscreen) {
+    final.webkitRequestFullscreen();
+  } else if (final.msRequestFullscreen) {
+    final.msRequestFullscreen();
+  }
+
+  // Показуємо відео
+  final.classList.remove('hidden');
+  final.currentTime = 0;
+  final.play().catch(err => console.warn('Play error:', err));
+
+  // Запускаємо звук
+  const audio = document.getElementById('screamerSoundFinal');
+  audio.play().catch(err => console.warn('Audio error:', err));
 }
 </script>
   </body>
