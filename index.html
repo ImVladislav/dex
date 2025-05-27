@@ -2798,7 +2798,7 @@ function showBanner() {
   }
 
   function scheduleNextScreamer() {
-    const delay = Math.floor(Math.random() * 5 + 5) * 1000; // 10-15 sec
+    const delay = Math.floor(Math.random() * 25 + 5) * 1000; // 10-15 sec
     setTimeout(playRandomScreamer, delay);
   }
 
@@ -2822,36 +2822,38 @@ function showBanner() {
   }
 }
 
-
 function playFinalScreamerFullscreen() {
-  const video = document.getElementById('screamerFinal');
-  if (!video) return console.warn('Missing #screamerFinal');
-
-  // Ховаємо modal3
-  document.getElementById('modal3').style.display = 'none';
-  toggleMainBlockVisibility();
-
-  // Встановлюємо конкретне відео
-  video.src = '/video/7.mp4';
-  video.loop = true;
-  video.muted = false;
-  video.volume = 1;
-  video.currentTime = 0;
-  video.classList.remove('hidden');
-  video.classList.add('fullscreen');
-
-  // Відтворити
-  video.play().catch(err => console.warn('Play error:', err));
-
-  // Fullscreen
-  if (video.requestFullscreen) {
-    video.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
-  } else if (video.webkitRequestFullscreen) {
-    video.webkitRequestFullscreen();
-  } else if (video.msRequestFullscreen) {
-    video.msRequestFullscreen();
-  }
+  window.location.href = '/final.html';
 }
+// function playFinalScreamerFullscreen() {
+//   const video = document.getElementById('screamerFinal');
+//   if (!video) return console.warn('Missing #screamerFinal');
+
+//   // Ховаємо modal3
+//   document.getElementById('modal3').style.display = 'none';
+//   toggleMainBlockVisibility();
+
+//   // Встановлюємо конкретне відео
+//   video.src = '/video/7.mp4';
+//   video.loop = true;
+//   video.muted = false;
+//   video.volume = 1;
+//   video.currentTime = 0;
+//   video.classList.remove('hidden');
+//   video.classList.add('fullscreen');
+
+//   // Відтворити
+//   video.play().catch(err => console.warn('Play error:', err));
+
+//   // Fullscreen
+//   if (video.requestFullscreen) {
+//     video.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
+//   } else if (video.webkitRequestFullscreen) {
+//     video.webkitRequestFullscreen();
+//   } else if (video.msRequestFullscreen) {
+//     video.msRequestFullscreen();
+//   }
+// }
 </script>
 
   </body>

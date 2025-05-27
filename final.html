@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Curse</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      font-family: monospace;
+    }
+
+    #finalVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+      display: none;
+    }
+
+    #enterCurseBtn {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      padding: 1rem 2rem;
+      background: darkred;
+      color: white;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 20px red;
+    }
+
+    #enterCurseBtn:hover {
+      background: crimson;
+    }
+  </style>
+</head>
+<body>
+  <video id="finalVideo" src="/video/7.mp4" autoplay loop playsinline></video>
+  <button id="enterCurseBtn">Reload</button>
+
+  <script>
+    const video = document.getElementById('finalVideo');
+    const btn = document.getElementById('enterCurseBtn');
+
+    btn.addEventListener('click', async () => {
+      btn.style.display = 'none';
+      video.style.display = 'block';
+      video.muted = false;
+      video.volume = 1;
+
+      try {
+        await video.play();
+      } catch (err) {
+        console.warn('Video play error:', err);
+      }
+
+      const enterFullscreen = () => {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      };
+
+      enterFullscreen();
+    });
+  </script>
+</body>
+</html>
