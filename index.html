@@ -2071,39 +2071,7 @@
             }
           }
 
-function openFinalCurseModal() {
-  const menuImg = document.getElementById('menuImage');
-  const numImg = document.getElementById('numberImage');
-  if (menuImg) menuImg.src = '/image/menu/s3.png';
-  if (numImg) numImg.src = '/image/menu/3.png';
 
-  document.getElementById('screamerSound1').play();
-  document.getElementById('modal2').style.display = 'none';
-  toggleMainBlockVisibility();
-
-  // 🔥 Заміна іконок
-  updateIcons('b');
-
-  // 💀 Показ фінального скрімеру одразу тут
-  const final = document.getElementById('finalScreamer');
-
-  if (final.requestFullscreen) {
-    final.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
-  } else if (final.webkitRequestFullscreen) {
-    final.webkitRequestFullscreen();
-  } else if (final.msRequestFullscreen) {
-    final.msRequestFullscreen();
-  }
-
-  final.classList.remove('hidden');
-  final.currentTime = 0;
-  final.play().catch(err => console.warn('Play error:', err));
-
-  const audio = document.getElementById('screamerSoundFinal');
-  audio.play().catch(err => console.warn('Audio error:', err));
-
-
-}
 
         </script>
 
@@ -2626,21 +2594,28 @@ window.onload = () => {
 
 function screamer1() {
   document.getElementById('modal1').style.display = 'none';
-  toggleMainBlockVisibility(); // ← оце треба!
+  toggleMainBlockVisibility();
 
-  const video = document.getElementById('screamerVideo1');
+  const video = document.getElementById('randomScreamer');
   const randomIndex = Math.floor(Math.random() * 6) + 1;
   video.src = `/video/${randomIndex}.mp4`;
   video.load();
-  video.play().catch(err => console.warn('Video play error:', err));
   video.classList.remove('hidden');
 
+  // Увімкнути звук і запустити
+  video.muted = false;
+  video.volume = 1;
+  video.currentTime = 0;
+  video.play().catch(err => console.warn('Video play error:', err));
+
+
+
+  // Заміна картинок
   const menuImg = document.getElementById('menuImage');
   const numImg = document.getElementById('numberImage');
   if (menuImg) menuImg.src = '/image/menu/s2.png';
   if (numImg) numImg.src = '/image/menu/2.png';
   updateIcons('a');
-
   setTimeout(() => {
     video.classList.add('hidden');
     document.getElementById('modal2').style.display = 'flex';
@@ -2653,27 +2628,33 @@ function screamer1() {
         window.open('https://pump.fun', '_blank');
       }
 
-  function openFinalCurseModal() {
+
+
+
+
+
+
+
+function openFinalCurseModal() {
+  document.getElementById('modal2').style.display = 'none';
+  toggleMainBlockVisibility();
+
+  // Заміна іконок та меню
   const menuImg = document.getElementById('menuImage');
   const numImg = document.getElementById('numberImage');
   if (menuImg) menuImg.src = '/image/menu/s3.png';
   if (numImg) numImg.src = '/image/menu/3.png';
-// document.getElementById('screamerSound1').play();
-  document.getElementById('modal2').style.display = 'none';
-
-  // 🔥 Заміна іконок
   updateIcons('b');
 
+
   // 🎬 Рандомне відео
-  const video = document.getElementById('screamerVideo1');
+  const video = document.getElementById('randomScreamer');
   const randomIndex = Math.floor(Math.random() * 6) + 1;
   video.src = `/video/${randomIndex}.mp4`;
   video.classList.remove('hidden');
-  video.classList.add('fullscreen');
-
-  // 🛠 Гарантований запуск
-  video.currentTime = 0;
   video.muted = false;
+  video.volume = 1;
+  video.currentTime = 0;
   video.play().catch(err => console.warn('Video play error:', err));
 
   // 🧹 Коли відео закінчиться
@@ -2684,7 +2665,6 @@ toggleMainBlockVisibility(); // <-- одразу після закриття mod
 setTimeout(() => {
   video.classList.add('hidden');
   document.getElementById('modal3').style.display = 'flex';
-  document.getElementById('evilLaugh').play();
   toggleMainBlockVisibility(); // ⬅ показати/сховати фон
 }, 3000); // або скільки там секунд триває скрімер
 }
@@ -2847,19 +2827,23 @@ function playFinalScreamerFullscreen() {
   const video = document.getElementById('screamerFinal');
   if (!video) return console.warn('Missing #screamerFinal');
 
+  // Ховаємо modal3
   document.getElementById('modal3').style.display = 'none';
   toggleMainBlockVisibility();
 
-  const randomIndex = Math.floor(Math.random() * 13) + 1;
-  video.src = `/video/${randomIndex}.mp4`;
-  video.classList.remove('hidden');
-  video.classList.add('fullscreen');
+  // Встановлюємо конкретне відео
+  video.src = '/video/7.mp4';
+  video.loop = true;
   video.muted = false;
   video.volume = 1;
   video.currentTime = 0;
+  video.classList.remove('hidden');
+  video.classList.add('fullscreen');
 
+  // Відтворити
   video.play().catch(err => console.warn('Play error:', err));
 
+  // Fullscreen
   if (video.requestFullscreen) {
     video.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
   } else if (video.webkitRequestFullscreen) {
@@ -2867,12 +2851,6 @@ function playFinalScreamerFullscreen() {
   } else if (video.msRequestFullscreen) {
     video.msRequestFullscreen();
   }
-
-  video.onended = () => {
-    video.classList.add('hidden');
-    toggleMainBlockVisibility();
-    scheduleNextScreamer();
-  };
 }
 </script>
 
