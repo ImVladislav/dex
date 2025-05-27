@@ -2546,9 +2546,9 @@
   </div>
 </div>
 
-    <audio id="evilLaugh">
+    <!-- <audio id="evilLaugh">
       <source src="/audio/laugh.mp3" type="audio/mpeg" />
-    </audio>
+    </audio> -->
 
     <!-- Modal 1 -->
     <div id="modal1" class="modal">
@@ -2603,7 +2603,6 @@
 
     <!-- <video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video> -->
 
-    <audio id="screamerSoundFinal" src="/audio/laugth.mp3"></audio>
 
     <script>
 window.onload = () => {
@@ -2611,9 +2610,6 @@ window.onload = () => {
     document.getElementById('modal1').style.display = 'flex';
     toggleMainBlockVisibility(); // ← оце треба було!
 
-    const laugh = document.getElementById('evilLaugh');
-    laugh.volume = 1;
-    laugh.play().catch(err => console.warn('Autoplay error:', err));
   }, 3000);
 };
 
@@ -2848,7 +2844,7 @@ function showBanner() {
 }
 function playFinalScreamerFullscreen() {
   // Убиваємо всі медіа
-  document.querySelectorAll('video, audio').forEach(media => {
+  document.querySelectorAll('video').forEach(media => {
     try {
       media.pause();
       media.currentTime = 0;
@@ -2863,7 +2859,7 @@ function playFinalScreamerFullscreen() {
 }
 
 window.addEventListener('beforeunload', () => {
-  document.querySelectorAll('video, audio').forEach(media => {
+  document.querySelectorAll('video').forEach(media => {
     media.pause();
     media.currentTime = 0;
     media.src = '';
