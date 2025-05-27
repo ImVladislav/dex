@@ -26,50 +26,73 @@
       display: none;
     }
 
-    #enterCurseBtn {
+    #startModal {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: red;
+      font-size: 2rem;
+    }
+
+    #startBtn {
+      margin-top: 2rem;
       padding: 1rem 2rem;
+      font-size: 1.5rem;
       background: darkred;
       color: white;
-      font-size: 1.5rem;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       box-shadow: 0 0 20px red;
     }
 
-    #enterCurseBtn:hover {
+    #startBtn:hover {
       background: crimson;
     }
   </style>
 </head>
 <body>
-  <video id="finalVideo" src="/video/7.mp4" autoplay loop playsinline></video>
-  <button id="enterCurseBtn">Reload</button>
+
+  <!-- Modal -->
+  <div id="startModal">
+    <div>Some thing went wrong.</div>
+    <button id="startBtn">Reload</button>
+  </div>
+
+  <!-- Video -->
+  <video id="finalVideo" src="/video/9.mp4" playsinline preload="auto"></video>
 
   <script>
+    const startBtn = document.getElementById('startBtn');
+    const startModal = document.getElementById('startModal');
     const video = document.getElementById('finalVideo');
-    const btn = document.getElementById('enterCurseBtn');
 
-    btn.addEventListener('click', async () => {
-      btn.style.display = 'none';
+    startBtn.addEventListener('click', async () => {
+      // Прибираємо модалку
+      startModal.style.display = 'none';
+
+      // Налаштування відео
       video.style.display = 'block';
       video.muted = false;
       video.volume = 1;
+      video.loop = true;
 
       try {
         await video.play();
       } catch (err) {
-        console.warn('Video play error:', err);
+        console.warn('Play error:', err);
       }
 
+      // Fullscreen
       const enterFullscreen = () => {
         if (video.requestFullscreen) {
-          video.requestFullscreen();
+          video.requestFullscreen().catch(console.warn);
         } else if (video.webkitRequestFullscreen) {
           video.webkitRequestFullscreen();
         } else if (video.msRequestFullscreen) {
@@ -78,6 +101,13 @@
       };
 
       enterFullscreen();
+    });
+
+    // Стоп при покиданні сторінки
+    window.addEventListener('beforeunload', () => {
+      video.pause();
+      video.currentTime = 0;
+      video.src = '';
     });
   </script>
 </body>

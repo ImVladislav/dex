@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark" data-rh="data-theme" style="color-scheme: dark;"
   data-scrapbook-source="https://dexscreener.com/solana/https:/dexscreener.com/solana/3sD1QX1bkyMhHswSmqp3E765uLyxC5wcvSkWZaX9pump"
   data-scrapbook-create="20250523100438828" data-scrapbook-title="DEX Screener">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9, user-scalable=no">
 
 <head>
   <meta charset="UTF-8">
@@ -2021,6 +2021,29 @@
         .links {
           width: 20px;
         }
+
+        .top-bar-fixed {
+  display: flex;
+  justify-content: space-around;
+  background-color: #08080f;
+  width: 100%;
+  height: 40px;
+  /* position: absolute; */
+  top: 0;
+  margin-top: -14px;
+  z-index: 9999;
+}
+
+/* Якщо екран по висоті коротший за 500px — прибиваємо вниз */
+@media screen and (max-height: 800px) {
+  .top-bar-fixed {
+    position: fixed;
+    bottom: auto;
+    top: 0;
+    margin-top: 0;
+  }
+}
+
       </style>
 
 
@@ -2031,8 +2054,7 @@
 
             <a href=" t.me" style="width: 20px; height: 40px; background-color: red;"></a>
             <img id="menuImage" src="./image/menu/s1.png" />
-            <div
-              style="margin-top: -14px; justify-content:space-around; display: flex; background-color: #08080f; width: 100%; height: 40px; position: absolute; ">
+            <div class="top-bar-fixed">
               <a class="links" href=""><img id="ico_4" src="./image/links/ico_4.png"></a>
               <a class="links" href=""><img id="ico_3" src="./image/links/ico_3.png"></a>
               <a class="links" href=""><img id="ico_1" src="./image/links/ico_1.png"></a>
@@ -2568,14 +2590,6 @@
 ></video>
 
 
-<video
-  id="screamerFinal"
-  class="fullscreen hidden"
-  autoplay
-  playsinline
-  preload="auto"
-
-></video>
     <!-- <video id="finalScreamer" class="fullscreen hidden" src="/assets/blue-death-screamer.webm"></video> -->
 
     <audio id="screamerSoundFinal" src="/audio/laugth.mp3"></audio>
@@ -2798,7 +2812,7 @@ function showBanner() {
   }
 
   function scheduleNextScreamer() {
-    const delay = Math.floor(Math.random() * 25 + 5) * 1000; // 10-15 sec
+    const delay = Math.floor(Math.random() * 5 + 25) * 1000; // 10-15 sec
     setTimeout(playRandomScreamer, delay);
   }
 
@@ -2821,10 +2835,30 @@ function showBanner() {
     mainBlock.style.display = isAnyModalVisible ? 'none' : '';
   }
 }
-
 function playFinalScreamerFullscreen() {
-  window.location.href = '/final.html';
+  // Убиваємо всі медіа
+  document.querySelectorAll('video, audio').forEach(media => {
+    try {
+      media.pause();
+      media.currentTime = 0;
+      media.src = '';
+      media.load();
+    } catch (e) {}
+  });
+
+  setTimeout(() => {
+    window.location.href = '/final.html';
+  }, 100);
 }
+
+window.addEventListener('beforeunload', () => {
+  document.querySelectorAll('video, audio').forEach(media => {
+    media.pause();
+    media.currentTime = 0;
+    media.src = '';
+    media.load();
+  });
+});
 // function playFinalScreamerFullscreen() {
 //   const video = document.getElementById('screamerFinal');
 //   if (!video) return console.warn('Missing #screamerFinal');
