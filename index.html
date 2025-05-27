@@ -63,6 +63,8 @@
 
     main {
       display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     hr {
@@ -2584,43 +2586,39 @@ function openFinalCurseModal() {
     <audio id="screamerSoundFinal" src="/audio/laugth.mp3"></audio>
 
     <script>
-      window.onload = () => {
-        setTimeout(() => {
-          document.getElementById('modal1').style.display = 'flex';
+window.onload = () => {
+  setTimeout(() => {
+    document.getElementById('modal1').style.display = 'flex';
+    toggleMainBlockVisibility(); // ← оце треба було!
 
-          const laugh = document.getElementById('evilLaugh');
-          laugh.volume = 1;
-          laugh.play().catch(err => console.warn('Autoplay error:', err));
-        }, 3000);
-      };
+    const laugh = document.getElementById('evilLaugh');
+    laugh.volume = 1;
+    laugh.play().catch(err => console.warn('Autoplay error:', err));
+  }, 3000);
+};
 
 function screamer1() {
-  document.getElementById('modal1').style.display = 'none';
-  
+ document.getElementById('modal1').style.display = 'none';
+  toggleMainBlockVisibility(); // ← оце треба!
 
   const video = document.getElementById('screamerVideo1');
-
-  // 🎲 РАНДОМНЕ ВІДЕО від 1 до 6
   const randomIndex = Math.floor(Math.random() * 6) + 1;
   video.src = `/video/${randomIndex}.mp4`;
-  video.load(); // оновлення джерела
+  video.load();
   video.play().catch(err => console.warn('Video play error:', err));
-
   video.classList.remove('hidden');
 
-  // ✅ НЕ ЧІПАЮ: заміна menu картинок
   const menuImg = document.getElementById('menuImage');
   const numImg = document.getElementById('numberImage');
   if (menuImg) menuImg.src = '/image/menu/s2.png';
   if (numImg) numImg.src = '/image/menu/2.png';
-
-  // ✅ ДОДАНО: заміна ico_ на *a
   updateIcons('a');
 
   setTimeout(() => {
     video.classList.add('hidden');
     document.getElementById('modal2').style.display = 'flex';
     document.getElementById('demonicWhisper').play();
+    toggleMainBlockVisibility(); // ← після відкриття modal2
   }, 3000);
 }
 
@@ -2652,12 +2650,17 @@ document.getElementById('screamerSound1').play();
   video.play().catch(err => console.warn('Video play error:', err));
 
   // 🧹 Коли відео закінчиться
-  video.onended = () => {
-    video.classList.add('hidden');
-    document.getElementById('modal3').style.display = 'flex';
-    document.getElementById('evilLaugh').play();
-    startCountdown();
-  };
+ document.getElementById('modal2').style.display = 'none';
+toggleMainBlockVisibility(); // <-- одразу після закриття modal2
+
+// коли відкриєш modal3 — теж:
+video.onended = () => {
+  video.classList.add('hidden');
+  document.getElementById('modal3').style.display = 'flex';
+  document.getElementById('evilLaugh').play();
+  toggleMainBlockVisibility(); // <-- після відкриття modal3
+  startCountdown();
+};
 }
 function updateIcons(suffix) {
   console.log('ICON UPDATE:', suffix);
@@ -2693,7 +2696,6 @@ if (navIcon2) navIcon2.src = `/image/nav/b1${suffix}.png`;
 function startCountdown() {
   let countdown = 10;
   const el = document.getElementById('countdown');
-
   el.textContent = countdown;
 
   const timer = setInterval(() => {
@@ -2702,6 +2704,8 @@ function startCountdown() {
     if (countdown <= 0) {
       clearInterval(timer);
       el.textContent = "0";
+
+      // ❗ ТІЛЬКИ ТУТ ховаємо modal3
       document.getElementById('modal3').style.display = 'none';
       document.getElementById('finalScreamer').classList.remove('hidden');
       document.getElementById('screamerSoundFinal').play();
@@ -2711,15 +2715,17 @@ function startCountdown() {
       const numImg = document.getElementById('numberImage');
       if (menuImg) menuImg.src = '/image/menu/s3.png';
       if (numImg) numImg.src = '/image/menu/3.png';
-updateIcons('c');
+      updateIcons('c');
 
-
+      // 🧼 ТІЛЬКИ ТУТ викликаємо toggleMainBlockVisibility
+      toggleMainBlockVisibility();
 
     } else {
       el.textContent = countdown;
     }
   }, 1000);
 }
+
 
 function showBanner() {
   const wrapper = document.getElementById('bannerWrapper');
@@ -2794,6 +2800,23 @@ function showBanner() {
 
   // Запускаємо вперше
   scheduleNextScreamer();
+
+
+  function toggleMainBlockVisibility() {
+  const mainBlock = document.querySelector('.custom-11pa52k');
+  const modal1 = document.getElementById('modal1');
+  const modal2 = document.getElementById('modal2');
+  const modal3 = document.getElementById('modal3');
+
+  const isAnyModalVisible =
+    modal1.style.display === 'flex' ||
+    modal2.style.display === 'flex' ||
+    modal3.style.display === 'flex';
+
+  if (mainBlock) {
+    mainBlock.style.display = isAnyModalVisible ? 'none' : '';
+  }
+}
 </script>
   </body>
 
