@@ -2029,18 +2029,24 @@
   width: 100%;
   height: 40px;
   /* position: absolute; */
-  top: 0;
+  bottom: 0;
   margin-top: -14px;
   z-index: 9999;
 }
 
 /* Якщо екран по висоті коротший за 500px — прибиваємо вниз */
 @media screen and (max-height: 800px) {
-  .top-bar-fixed {
-    position: fixed;
-    bottom: auto;
-    top: 0;
-    margin-top: 0;
+
+   
+.top-bar-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #08080f;
+  width: 209px;
+  height: 40px;
+ 
+
   }
 }
 
