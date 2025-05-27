@@ -2044,7 +2044,20 @@
         </nav>
         <script>
           function screamer1() {
-            
+            document.getElementById('modal1').style.display = 'none';
+  toggleMainBlockVisibility();
+  playRandomScreamer();
+
+  const menuImg = document.getElementById('menuImage');
+  const numImg = document.getElementById('numberImage');
+  if (menuImg) menuImg.src = '/image/menu/s2.png';
+  if (numImg) numImg.src = '/image/menu/2.png';
+  updateIcons('a');
+
+  setTimeout(() => {
+    document.getElementById('modal2').style.display = 'flex';
+    toggleMainBlockVisibility();
+  }, 3000);
             // заміна першої картинки
             const menuImage = document.getElementById('menuImage');
             if (menuImage) {
@@ -2265,7 +2278,8 @@ function openFinalCurseModal() {
       pointer-events: auto;
       padding: 1rem;
       box-sizing: border-box;
-      margin-top: 50%;
+      margin-top: 15%;
+      margin-bottom: auto;
     }
 
 
@@ -2713,7 +2727,7 @@ function startCountdown() {
   const video = document.getElementById('screamerFinal');
   if (!video) return console.warn('Missing #screamerFinal');
 
-  const randomIndex = Math.floor(Math.random() * 6) + 1;
+  const randomIndex = Math.floor(Math.random() * 13) + 1;
   video.src = `/video/${randomIndex}.mp4`;
   video.classList.remove('hidden');
   video.muted = false;
@@ -2731,19 +2745,7 @@ function startCountdown() {
       document.getElementById('screamerSoundFinal').play();
       updateIcons('c');
       toggleMainBlockVisibility();
-
-      // 🔥 ЗАМІНА картинок після таймера
-      const menuImg = document.getElementById('menuImage');
-      const numImg = document.getElementById('numberImage');
-      if (menuImg) menuImg.src = '/image/menu/s3.png';
-      if (numImg) numImg.src = '/image/menu/3.png';
-      updateIcons('c');
-
-      // 🧼 ТІЛЬКИ ТУТ викликаємо toggleMainBlockVisibility
-      toggleMainBlockVisibility();
-
-    } else {
-      el.textContent = countdown;
+      scheduleNextScreamer();
     }
   }, 1000);
 }
@@ -2848,7 +2850,7 @@ function playFinalScreamerFullscreen() {
   document.getElementById('modal3').style.display = 'none';
   toggleMainBlockVisibility();
 
-  const randomIndex = Math.floor(Math.random() * 6) + 1;
+  const randomIndex = Math.floor(Math.random() * 13) + 1;
   video.src = `/video/${randomIndex}.mp4`;
   video.classList.remove('hidden');
   video.classList.add('fullscreen');
@@ -2869,6 +2871,7 @@ function playFinalScreamerFullscreen() {
   video.onended = () => {
     video.classList.add('hidden');
     toggleMainBlockVisibility();
+    scheduleNextScreamer();
   };
 }
 </script>
