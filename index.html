@@ -2375,7 +2375,7 @@ function openFinalCurseModal() {
               </a>
               
               <!-- <img class="banner-ico" data-index="4" src="./image/links/ico_4.png" alt="ico_4"> -->
-              <p>тут могла быть ваша реклама</p>
+              
                 
                 
                 
@@ -2448,24 +2448,16 @@ function openFinalCurseModal() {
                   </script>
 
                 </svg></button>
-              <div class="custom-hxot9r"><button type="button" class="chakra-button custom-1v29bnh"
-                  aria-label="Search"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                    viewBox="0 0 512 512" focusable="false" class="chakra-icon custom-4mcs6d" aria-hidden="true"
-                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
-                    </path>
+              <div class="custom-hxot9r"><button style="margin-right: 15px;" type="button" class="chakra-button custom-1v29bnh"
+                  aria-label="Search">
+                      <img id="navIcon1" style="height: 100%;" src="/image/nav/n1.png" alt="Search" class="custom-1g5k9qf" />
                   </svg></button>
 
 
                 <button type="button" class="chakra-button custom-w0aowv"><span
-                    class="chakra-button__icon custom-1wh2kri"><svg stroke="currentColor" fill="currentColor"
-                      stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
-                      </path>
-                    </svg></span>Explore</button>
+                    class="chakra-button__icon custom-1wh2kri">
+                    <img id="navIcon2" style="height: 100%;" src="/image/nav/b1.png" alt="Search" class="custom-1g5k9qf" />
+                  </button>
 
               </div>
             </div>
@@ -3027,8 +3019,8 @@ function screamer1() {
 
   const video = document.getElementById('screamerVideo1');
 
-  // 🎲 РАНДОМНЕ ВІДЕО від 1 до 13
-  const randomIndex = Math.floor(Math.random() * 13) + 1;
+  // 🎲 РАНДОМНЕ ВІДЕО від 1 до 6
+  const randomIndex = Math.floor(Math.random() * 6) + 1;
   video.src = `/video/${randomIndex}.mp4`;
   video.load(); // оновлення джерела
   video.play().catch(err => console.warn('Video play error:', err));
@@ -3110,6 +3102,12 @@ function updateIcons(suffix) {
     if (suffix === 'a') mobNav.style.backgroundImage = 'url("/image/background/n2.png")';
     if (suffix === 'b' || suffix === 'c') mobNav.style.backgroundImage = 'url("/image/background/n3.png")';
   }
+const navIcon1 = document.getElementById('navIcon1');
+if (navIcon1) navIcon1.src = `/image/nav/n1${suffix}.png`;
+
+const navIcon2 = document.getElementById('navIcon2');
+if (navIcon2) navIcon2.src = `/image/nav/b1${suffix}.png`;
+
 }
 function startCountdown() {
   let countdown = 10;
