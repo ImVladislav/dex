@@ -2600,6 +2600,11 @@ window.onload = () => {
 
   }, 3000);
 };
+  const isShortScreen = window.innerHeight < 815;
+  const gImages = ["g1.png", "g2.png", "g3.png"];
+  let currentGIndex = 0;
+
+
 
 function screamer1() {
   document.getElementById('modal1').style.display = 'none';
@@ -2622,7 +2627,13 @@ function screamer1() {
   // Заміна картинок
   const menuImg = document.getElementById('menuImage');
   const numImg = document.getElementById('numberImage');
-  if (menuImg) menuImg.src = '/image/menu/s2.png';
+if (menuImg) {
+  if (isShortScreen) {
+    menuImg.src = '/image/menu/g2.png';
+  } else {
+    menuImg.src = '/image/menu/s2.png';
+  }
+}
   if (numImg) numImg.src = '/image/menu/2.png';
   updateIcons('a');
   setTimeout(() => {
@@ -2651,8 +2662,9 @@ function openFinalCurseModal() {
   // Заміна іконок та меню
   const menuImg = document.getElementById('menuImage');
   const numImg = document.getElementById('numberImage');
-  if (menuImg) menuImg.src = '/image/menu/s3.png';
-  if (numImg) numImg.src = '/image/menu/3.png';
+if (menuImg) {
+  menuImg.src = isShortScreen ? '/image/menu/g3.png' : '/image/menu/s3.png';
+}  if (numImg) numImg.src = '/image/menu/3.png';
   updateIcons('b');
 
 
