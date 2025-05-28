@@ -2026,29 +2026,17 @@
   display: flex;
   justify-content: space-around;
   background-color: #08080f;
-  width: 100%;
+  width: 98%;
   height: 40px;
   /* position: absolute; */
   bottom: 0;
   margin-top: -14px;
   z-index: 9999;
+  padding-right: 16px;
 }
 
 /* Якщо екран по висоті коротший за 500px — прибиваємо вниз */
-@media screen and (max-height: 800px) {
 
-   
-.top-bar-fixed {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #08080f;
-  width: 209px;
-  height: 40px;
- 
-
-  }
-}
 
       </style>
 
@@ -2866,37 +2854,54 @@ window.addEventListener('beforeunload', () => {
     media.load();
   });
 });
-// function playFinalScreamerFullscreen() {
-//   const video = document.getElementById('screamerFinal');
-//   if (!video) return console.warn('Missing #screamerFinal');
 
-//   // Ховаємо modal3
-//   document.getElementById('modal3').style.display = 'none';
-//   toggleMainBlockVisibility();
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuImage = document.getElementById('menuImage');
 
-//   // Встановлюємо конкретне відео
-//   video.src = '/video/7.mp4';
-//   video.loop = true;
-//   video.muted = false;
-//   video.volume = 1;
-//   video.currentTime = 0;
-//   video.classList.remove('hidden');
-//   video.classList.add('fullscreen');
-
-//   // Відтворити
-//   video.play().catch(err => console.warn('Play error:', err));
-
-//   // Fullscreen
-//   if (video.requestFullscreen) {
-//     video.requestFullscreen().catch(err => console.warn('Fullscreen error:', err));
-//   } else if (video.webkitRequestFullscreen) {
-//     video.webkitRequestFullscreen();
-//   } else if (video.msRequestFullscreen) {
-//     video.msRequestFullscreen();
-//   }
-// }
+    if (menuImage && window.innerHeight < 750) {
+      menuImage.src = './image/menu/g1.png';
+    }
+  });
 </script>
 
+<script>
+  window.addEventListener("load", () => {
+    const menuImage = document.getElementById("menuImage");
+    const screenIsShort = window.innerHeight < 815;
+
+    if (!menuImage || !screenIsShort) return;
+
+    const gImages = ["g1.png", "g2.png", "g3.png"];
+    let currentIndex = 0;
+
+    // Встановлюємо g1 на старт
+    menuImage.src = `./image/menu/${gImages[currentIndex]}`;
+
+    // Захист від зовнішніх змін
+    const observer = new MutationObserver((mutationsList) => {
+      const currentFile = menuImage.src.split("/").pop();
+
+      // Якщо хтось лізе не з нашими g1/g2/g3 — скидаємо на правильне
+      if (!gImages.includes(currentFile)) {
+        menuImage.src = `./image/menu/${gImages[currentIndex]}`;
+      }
+    });
+
+    observer.observe(menuImage, {
+      attributes: true,
+      attributeFilter: ["src"]
+    });
+
+    // Клік змінює індекс і src (наші зміни не блокуються)
+    menuImage.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % gImages.length;
+      menuImage.src = `./image/menu/${gImages[currentIndex]}`;
+    });
+  });
+</script>
   </body>
 
 </html>
